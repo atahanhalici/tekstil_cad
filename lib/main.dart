@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,9 +29,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: Center(),
+        body: Stack(
+          children: [
+            const Center(),
+            Positioned(
+                left: 25,
+                width: MediaQuery.of(context).size.width - 50,
+                bottom: 20,
+                child: const BottomNavigationBars())
+          ],
+        ),
       ),
     );
   }
