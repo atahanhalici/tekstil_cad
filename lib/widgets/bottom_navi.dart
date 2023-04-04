@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekstil_cad/pages/model_page.dart';
 
 class BottomNavigationBars extends StatelessWidget {
   const BottomNavigationBars({Key? key}) : super(key: key);
@@ -30,21 +31,37 @@ class BottomNavigationBars extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: 65,
-            decoration: const BoxDecoration(
-                color: Colors.black, shape: BoxShape.circle),
-            // child: Icon(Icons.home),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ModelPage()),
+              );
+            },
+            child: Container(
+              height: 65,
+              decoration: const BoxDecoration(
+                  color: Colors.black, shape: BoxShape.circle),
+              // child: Icon(Icons.home),
+            ),
           ),
           Positioned(
             left: (MediaQuery.of(context).size.width - 80) / 2,
-            child: const SizedBox(
-                height: 65,
-                child: Icon(
-                  Icons.home,
-                  size: 30,
-                  color: Colors.white,
-                )),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ModelPage()),
+                );
+              },
+              child: const SizedBox(
+                  height: 65,
+                  child: Icon(
+                    Icons.home,
+                    size: 30,
+                    color: Colors.white,
+                  )),
+            ),
           ),
         ],
       ),
