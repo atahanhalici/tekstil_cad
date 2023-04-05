@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
+import 'package:tekstil_cad/pages/my_models_page.dart';
+import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 
 class BottomNavigationBars extends StatelessWidget {
   const BottomNavigationBars({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ModelViewModel _model = Provider.of<ModelViewModel>(context, listen: false);
+
     return SizedBox(
       height: 80,
       child: Stack(
@@ -20,8 +25,15 @@ class BottomNavigationBars extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Icon(Icons.dehaze),
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        _model.modelleriGetir();
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MyModelsPage(),
+                        ));
+                      },
+                      child: Icon(Icons.dehaze)),
                   Icon(
                     Icons.home,
                     color: Colors.blue,
@@ -32,12 +44,7 @@ class BottomNavigationBars extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ModelPage()),
-              );
-            },
+            onTap: () {},
             child: Container(
               height: 65,
               decoration: const BoxDecoration(
@@ -48,12 +55,7 @@ class BottomNavigationBars extends StatelessWidget {
           Positioned(
             left: (MediaQuery.of(context).size.width - 80) / 2,
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ModelPage()),
-                );
-              },
+              onTap: () {},
               child: const SizedBox(
                   height: 65,
                   child: Icon(

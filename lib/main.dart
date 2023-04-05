@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
+import 'package:tekstil_cad/locator.dart';
 
 void main() {
-  runApp(const MyApp());
+  setupLocator();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => ModelViewModel()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
