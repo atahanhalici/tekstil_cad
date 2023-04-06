@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tekstil_cad/pages/home_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 import 'package:tekstil_cad/locator.dart';
@@ -35,19 +36,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            const Center(),
-            Positioned(
-                left: 25,
-                width: MediaQuery.of(context).size.width - 50,
-                bottom: 20,
-                child: const BottomNavigationBars())
-          ],
-        ),
-      ),
-    );
+    return HomePage();
   }
 }

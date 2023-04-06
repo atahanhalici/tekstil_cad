@@ -17,8 +17,6 @@ class _ModelPageState extends State<ModelPage> {
   Color _seciliRenk = Colors.white;
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.height);
-
     return SafeArea(
       child: Scaffold(
           backgroundColor: _seciliRenk,
@@ -44,7 +42,7 @@ class _ModelPageState extends State<ModelPage> {
                       ),
                 ),
                 Container(
-                  height: 200,
+                  height: 220,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     color: Colors.blue,
@@ -70,12 +68,12 @@ class _ModelPageState extends State<ModelPage> {
                               fontSize: 25),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 5,
                         ),
                         Text(
                           widget.model.aciklama,
                           style: const TextStyle(
-                              color: Colors.white, fontSize: 15),
+                              color: Colors.white, fontSize: 13),
                         ),
                         const SizedBox(
                           height: 10,
@@ -90,7 +88,7 @@ class _ModelPageState extends State<ModelPage> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               DropdownButton<Color>(
-                                  dropdownColor: Colors.black,
+                                  dropdownColor: Colors.brown,
                                   elevation: 0,
                                   underline: Container(
                                     height: 0,

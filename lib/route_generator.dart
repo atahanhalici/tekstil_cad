@@ -18,8 +18,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return _gidilecekrota(const MyHomePage());
-      case '/modellerim':
-        return _gidilecekrota(const MyModelsPage());
+      /*case '/modellerim':
+        return _gidilecekrota(const MyModelsPage());*/
 
       default:
         return _gidilecekrota(const MyHomePage());

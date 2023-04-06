@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
+import 'package:video_player/video_player.dart';
 
 class MyModelsPage extends StatelessWidget {
-  const MyModelsPage({Key? key}) : super(key: key);
+ const MyModelsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class MyModelsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Tekstil Cad"),
+          title: const Text("Kalıplarım"),
           elevation: 0,
           centerTitle: true,
         ),
@@ -49,6 +50,7 @@ class MyModelsPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            
             const Padding(
               padding: EdgeInsets.all(5.0),
               child: Text(
@@ -104,7 +106,7 @@ class MyModelsPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 30, 59, 49),
+                          color: Colors.brown,
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -115,7 +117,7 @@ class MyModelsPage extends StatelessWidget {
                             children: [
                               Center(
                                 child: Container(
-                                    margin: const EdgeInsets.only(top: 23),
+                                    margin: const EdgeInsets.only(top: 20),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 5),
                                     // height: 200,
@@ -144,8 +146,7 @@ class MyModelsPage extends StatelessWidget {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 231, 209, 186),
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold)),
                                 ),
                               ),
@@ -158,6 +159,7 @@ class MyModelsPage extends StatelessWidget {
                                       maxLines: 4,
                                       // overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
+                                        fontSize: 11,
                                         color: Colors.white,
                                       )),
                                 ),
