@@ -21,10 +21,19 @@ class _ModelPageState extends State<ModelPage> {
       child: Scaffold(
           backgroundColor: _seciliRenk,
           appBar: AppBar(
-            title: Text(widget.model.adi),
+            title: Text(
+              "Tekstil Cad",
+              style: TextStyle(
+                  color: _seciliRenk == Colors.white
+                      ? Colors.black
+                      : Colors.white),
+            ),
             centerTitle: true,
             elevation: 0,
-            toolbarHeight: 50,
+            backgroundColor: Colors.transparent,
+            iconTheme: IconThemeData(
+                color:
+                    _seciliRenk == Colors.white ? Colors.black : Colors.white),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -45,7 +54,7 @@ class _ModelPageState extends State<ModelPage> {
                   height: 220,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.orange,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
@@ -88,7 +97,7 @@ class _ModelPageState extends State<ModelPage> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               DropdownButton<Color>(
-                                  dropdownColor: Colors.brown,
+                                  dropdownColor: Colors.black,
                                   elevation: 0,
                                   underline: Container(
                                     height: 0,

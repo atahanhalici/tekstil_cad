@@ -7,7 +7,7 @@ import 'package:tekstil_cad/widgets/bottom_navi.dart';
 import 'package:video_player/video_player.dart';
 
 class MyModelsPage extends StatelessWidget {
- const MyModelsPage({Key? key}) : super(key: key);
+  const MyModelsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,8 @@ class MyModelsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Kalıplarım"),
+          backgroundColor: Colors.transparent,
+          title: const Text("Tekstil Cad"),
           elevation: 0,
           centerTitle: true,
         ),
@@ -25,7 +26,7 @@ class MyModelsPage extends StatelessWidget {
               child: _model.state == ViewState.geliyor
                   ? CircularProgressIndicator()
                   : _model.state == ViewState.geldi
-                      ? kaliplarim(_model)
+                      ? kaliplarim(_model, context)
                       : Text("HATA"),
             ),
             Positioned(
@@ -39,20 +40,30 @@ class MyModelsPage extends StatelessWidget {
     );
   }
 
-  Container kaliplarim(ModelViewModel _model) {
+  Container kaliplarim(ModelViewModel _model, BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 10, right: 10),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Text(
+                "Profil",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
-            
             const Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
                 "Tüm Kalıplarınız Burada Listelenmektedir.",
                 textAlign: TextAlign.start,
@@ -106,7 +117,7 @@ class MyModelsPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.brown,
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),

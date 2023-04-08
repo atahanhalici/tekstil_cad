@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tekstil_cad/pages/login_page.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
 import 'package:tekstil_cad/pages/my_models_page.dart';
+import 'package:tekstil_cad/pages/profile_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 
 class BottomNavigationBars extends StatelessWidget {
@@ -21,7 +23,7 @@ class BottomNavigationBars extends StatelessWidget {
             child: Container(
               height: 55,
               decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.orange,
                   borderRadius: BorderRadius.circular(20.0)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -36,15 +38,25 @@ class BottomNavigationBars extends StatelessWidget {
                       child: Icon(Icons.dehaze)),
                   Icon(
                     Icons.home,
-                    color: Colors.blue,
+                    color: Colors.transparent,
                   ),
-                  Icon(Icons.person)
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ));
+                      },
+                      child: Icon(Icons.person))
                 ],
               ),
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ProfilePage(),
+              ));
+            },
             child: Container(
               height: 65,
               decoration: const BoxDecoration(

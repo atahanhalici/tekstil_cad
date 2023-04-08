@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
+    controller.pause();
     controller.dispose();
     super.dispose();
   }
@@ -83,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                             const EdgeInsets.only(top: 15, left: 15, right: 15),
                         height: 274,
                         decoration: BoxDecoration(
-                            color: Colors.brown,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(10.0)),
                         child: Column(
                           children: [
@@ -107,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                             const EdgeInsets.only(top: 15, left: 15, right: 15),
                         height: 274,
                         decoration: BoxDecoration(
-                            color: Colors.brown,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(10.0)),
                         child: Column(
                           children: [
