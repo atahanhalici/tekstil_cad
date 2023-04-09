@@ -11,42 +11,44 @@ class _LoginPageState extends State<LoginPage> {
   bool _gizli = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('assets/login/arkaplan.jpg'),
-            fit: BoxFit.cover,
-          )),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(
-                  top: 200,
-                  left: 50,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('assets/login/arkaplan.jpg'),
+              fit: BoxFit.cover,
+            )),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(
+                    top: 200,
+                    left: 50,
+                  ),
+                  child: Text(
+                    'Giriş Yap',
+                    style: TextStyle(
+                        fontSize: 48,
+                        // fontFamily: 'Poppins-Medium',
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
                 ),
-                child: Text(
-                  'Giriş Yap',
-                  style: TextStyle(
-                      fontSize: 48,
-                      // fontFamily: 'Poppins-Medium',
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    right: 0,
+                    bottom: 0,
+                    left: 20,
+                  ),
+                  child: LayerOne(context),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 20,
-                  right: 0,
-                  bottom: 0,
-                  left: 20,
-                ),
-                child: LayerOne(context),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

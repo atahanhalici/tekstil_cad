@@ -7,69 +7,65 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Tekstil Cad",
-            style: TextStyle(color: Colors.black),
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "Profil",
+              style: TextStyle(color: Colors.black),
+            ),
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            iconTheme: IconThemeData(color: Colors.black),
           ),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          iconTheme: IconThemeData(color: Colors.black),
-        ),
-        body: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              height: MediaQuery.of(context).size.height,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const Text(
-                      "Profil",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    SizedBox(height: 20),
-                    ProfileMenu(
-                      text: "Hesabım",
-                      icon: "assets/icons/User Icon.svg",
-                      press: () => {},
-                    ),
-                    ProfileMenu(
-                      text: "Bildirimler",
-                      icon: "assets/icons/Bell.svg",
-                      press: () {},
-                    ),
-                    ProfileMenu(
-                      text: "Ayarlar",
-                      icon: "assets/icons/Settings.svg",
-                      press: () {},
-                    ),
-                    ProfileMenu(
-                      text: "Yardım Merkezi",
-                      icon: "assets/icons/Question mark.svg",
-                      press: () {},
-                    ),
-                    ProfileMenu(
-                      text: "Çıkış Yap",
-                      icon: "assets/icons/Log out.svg",
-                      press: () {},
-                    ),
-                  ],
+          body: Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 20),
+                height: MediaQuery.of(context).size.height,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ProfileMenu(
+                        text: "Hesabım",
+                        icon: "assets/icons/User Icon.svg",
+                        press: () => {},
+                      ),
+                      ProfileMenu(
+                        text: "Bildirimler",
+                        icon: "assets/icons/Bell.svg",
+                        press: () {},
+                      ),
+                      ProfileMenu(
+                        text: "Ayarlar",
+                        icon: "assets/icons/Settings.svg",
+                        press: () {},
+                      ),
+                      ProfileMenu(
+                        text: "Yardım Merkezi",
+                        icon: "assets/icons/Question mark.svg",
+                        press: () {},
+                      ),
+                      ProfileMenu(
+                        text: "Çıkış Yap",
+                        icon: "assets/icons/Log out.svg",
+                        press: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-                left: 25,
-                width: MediaQuery.of(context).size.width - 50,
-                bottom: 20,
-                child: const BottomNavigationBars())
-          ],
-        ));
+              Positioned(
+                  left: 25,
+                  width: MediaQuery.of(context).size.width - 50,
+                  bottom: 20,
+                  child: const BottomNavigationBars(
+                    sayi: 2,
+                  ))
+            ],
+          )),
+    );
   }
 
   ProfileMenu({required String text, required String icon, press}) {

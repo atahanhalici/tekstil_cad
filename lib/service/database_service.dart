@@ -1,4 +1,5 @@
 import 'package:tekstil_cad/models/3d_model.dart';
+import 'package:tekstil_cad/models/user.dart';
 
 class DatabaseService {
   List<Model> modeller = [];
@@ -74,8 +75,18 @@ class DatabaseService {
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
         resim:
             "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/22786630999417.563c2e55095a0.jpg",
-        link: "assets/ısd.glb"));
+        link: "assets/jacket.glb"));
 
     return modeller;
+  }
+
+  userGetir() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return User(
+        adi: "Atahan",
+        soyadi: "Halıcı",
+        sirket: "FABA Software",
+        mail: "atahanhalici@fabasoftware.com",
+        kullanici_id: "atahan_faba");
   }
 }

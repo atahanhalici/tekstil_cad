@@ -7,7 +7,8 @@ import 'package:tekstil_cad/pages/profile_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 
 class BottomNavigationBars extends StatelessWidget {
-  const BottomNavigationBars({Key? key}) : super(key: key);
+  final int sayi;
+  const BottomNavigationBars({Key? key, required this.sayi}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,32 +31,46 @@ class BottomNavigationBars extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        _model.modelleriGetir();
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MyModelsPage(),
-                        ));
+                        if (sayi == 0) {
+                          _model.modelleriGetir();
+                          Navigator.pushNamed(context, "/modellerim");
+                        } else if (sayi != 0 && sayi != 1) {
+                          _model.modelleriGetir();
+                          Navigator.pushReplacementNamed(context, '/modellerim',
+                              arguments: {});
+                        }
                       },
-                      child: Icon(Icons.dehaze)),
-                  Icon(
+                      child: Container(
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.all(15),
+                          child: const Icon(Icons.dehaze))),
+                  const Icon(
                     Icons.home,
                     color: Colors.transparent,
                   ),
                   GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ));
+                        if (sayi == 0) {
+                          Navigator.pushNamed(context, "/profil");
+                        } else if (sayi != 0 && sayi != 2) {
+                          Navigator.pushReplacementNamed(context, '/profil',
+                              arguments: {});
+                        }
                       },
-                      child: Icon(Icons.person))
+                      child: Container(
+                          color: Colors.transparent,
+                          padding: const EdgeInsets.all(15),
+                          child: const Icon(Icons.person)))
                 ],
               ),
             ),
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ProfilePage(),
-              ));
+              if (sayi != 0) {
+                Navigator.popUntil(
+                    context, (route) => route.settings.name == "/");
+              }
             },
             child: Container(
               height: 65,
@@ -67,7 +82,12 @@ class BottomNavigationBars extends StatelessWidget {
           Positioned(
             left: (MediaQuery.of(context).size.width - 80) / 2,
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                if (sayi != 0) {
+                  Navigator.popUntil(
+                      context, (route) => route.settings.name == "/");
+                }
+              },
               child: const SizedBox(
                   height: 65,
                   child: Icon(

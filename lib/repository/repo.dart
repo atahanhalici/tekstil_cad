@@ -7,4 +7,8 @@ final DatabaseService _databaseService = locator<DatabaseService>();
  return await _databaseService.modelleriGetir();
   }
 
+  userGetir() async{
+    return await _databaseService.userGetir();
+  }
+
 }

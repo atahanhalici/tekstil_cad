@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
-import 'package:video_player/video_player.dart';
 
 class MyModelsPage extends StatelessWidget {
   const MyModelsPage({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class MyModelsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text("Tekstil Cad"),
+          title: const Text("Modellerim"),
           elevation: 0,
           centerTitle: true,
         ),
@@ -33,7 +32,9 @@ class MyModelsPage extends StatelessWidget {
                 left: 25,
                 width: MediaQuery.of(context).size.width - 50,
                 bottom: 20,
-                child: const BottomNavigationBars())
+                child: const BottomNavigationBars(
+                  sayi: 1,
+                ))
           ],
         ),
       ),
@@ -48,17 +49,6 @@ class MyModelsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Text(
-                "Profil",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-            ),
             const SizedBox(
               height: 20,
             ),
@@ -137,7 +127,7 @@ class MyModelsPage extends StatelessWidget {
                                       height: 140,
                                       width: 120,
                                       child: FadeInImage.assetNetwork(
-                                        placeholder: 'assets/def.png',
+                                        placeholder: 'assets/logo.jpeg',
                                         image: _model.asd[index].resim,
                                         fit: BoxFit.cover,
                                         placeholderFit: BoxFit.contain,
@@ -168,7 +158,7 @@ class MyModelsPage extends StatelessWidget {
                                   child: Text(_model.asd[index].aciklama,
                                       textAlign: TextAlign.start,
                                       maxLines: 4,
-                                      // overflow: TextOverflow.ellipsis,
+                                      overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 11,
                                         color: Colors.white,

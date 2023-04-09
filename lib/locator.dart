@@ -5,5 +5,5 @@ import 'package:tekstil_cad/service/database_service.dart';
 final locator = GetIt.instance;
 void setupLocator() {
   locator.registerLazySingleton(() => Repository());
-   locator.registerLazySingleton(() => DatabaseService());
+  locator.registerLazySingleton(() => DatabaseService());
 }
