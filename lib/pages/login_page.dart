@@ -13,41 +13,45 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('assets/login/arkaplan.jpg'),
-              fit: BoxFit.cover,
-            )),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const Padding(
-                  padding: EdgeInsets.only(
-                    top: 200,
-                    left: 50,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/login/arkaplan.jpg'),
+            fit: BoxFit.cover,
+          )),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 30.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 200,
+                      left: 50,
+                    ),
+                    child: Text(
+                      'Giriş Yap',
+                      style: TextStyle(
+                          fontSize: 48,
+                          // fontFamily: 'Poppins-Medium',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
                   ),
-                  child: Text(
-                    'Giriş Yap',
-                    style: TextStyle(
-                        fontSize: 48,
-                        // fontFamily: 'Poppins-Medium',
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      right: 0,
+                      bottom: 0,
+                      left: 20,
+                    ),
+                    child: LayerOne(context),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20,
-                    right: 0,
-                    bottom: 0,
-                    left: 20,
-                  ),
-                  child: LayerOne(context),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -57,10 +61,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool isChecked = false;
   Widget LayerThree(BuildContext context) {
-    const Color forgotPasswordText = Color(0xFF024335);
-    const Color signInButton = Color(0xFF024335);
-
-    const Color checkbox = Color(0xFF024335);
+    const Color checkbox = Colors.orange;
 
     const Color hintText = Color(0xFFB4B4B4);
 

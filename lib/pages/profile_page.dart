@@ -1,5 +1,9 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:tekstil_cad/pages/my_account_page.dart';
+import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,17 +11,19 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserViewModel _userModel =
+        Provider.of<UserViewModel>(context, listen: true);
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Profil",
               style: TextStyle(color: Colors.black),
             ),
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.transparent,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
           ),
           body: Stack(
             children: [
@@ -29,29 +35,45 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       ProfileMenu(
                         text: "Hesabım",
-                        icon: "assets/icons/User Icon.svg",
-                        press: () => {},
-                      ),
-                      ProfileMenu(
-                        text: "Bildirimler",
-                        icon: "assets/icons/Bell.svg",
-                        press: () {},
+                        icon: Icons.person,
+                        press: () {
+                          defaultTargetPlatform == TargetPlatform.android
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return MyAccount();
+                                    },
+                                  ),
+                                )
+                              : Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                    builder: (context) {
+                                      return MyAccount();
+                                    },
+                                  ),
+                                );
+                        },
                       ),
                       ProfileMenu(
                         text: "Ayarlar",
-                        icon: "assets/icons/Settings.svg",
+                        icon: Icons.settings,
                         press: () {},
                       ),
                       ProfileMenu(
                         text: "Yardım Merkezi",
-                        icon: "assets/icons/Question mark.svg",
+                        icon: Icons.question_answer,
                         press: () {},
                       ),
                       ProfileMenu(
                         text: "Çıkış Yap",
-                        icon: "assets/icons/Log out.svg",
+                        icon: Icons.logout,
                         press: () {},
                       ),
+                      SizedBox(
+                        height: 80,
+                      )
                     ],
                   ),
                 ),
@@ -68,7 +90,10 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  ProfileMenu({required String text, required String icon, press}) {
+  ProfileMenu(
+      {required String text,
+      required IconData icon,
+      required void Function()? press}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextButton(
@@ -81,10 +106,7 @@ class ProfilePage extends StatelessWidget {
         onPressed: press,
         child: Row(
           children: [
-            SvgPicture.asset(
-              icon,
-              width: 22,
-            ),
+            Icon(icon),
             SizedBox(width: 20),
             Expanded(
                 child: Text(

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tekstil_cad/main.dart';
+import 'package:tekstil_cad/models/user.dart';
 import 'package:tekstil_cad/pages/home_page.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
+import 'package:tekstil_cad/pages/my_account_page.dart';
 import 'package:tekstil_cad/pages/my_models_page.dart';
 import 'package:tekstil_cad/pages/profile_page.dart';
 
@@ -24,6 +26,7 @@ class RouteGenerator {
         return _gidilecekrota(const MyModelsPage());
       case '/profil':
         return _gidilecekrota(const ProfilePage());
+
       default:
         return _gidilecekrota(const HomePage());
     }
