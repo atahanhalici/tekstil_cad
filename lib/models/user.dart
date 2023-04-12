@@ -3,6 +3,7 @@ class User {
   String soyadi;
   String sirket;
   String mail;
+  // ignore: non_constant_identifier_names
   String kullanici_id;
 
   User({
@@ -10,6 +11,7 @@ class User {
     required this.soyadi,
     required this.sirket,
     required this.mail,
+    // ignore: non_constant_identifier_names
     required this.kullanici_id,
   });
   Map<String, dynamic> toMap() {

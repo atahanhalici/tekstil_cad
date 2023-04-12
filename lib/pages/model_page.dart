@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/3d_model.dart';
-import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 
 class ModelPage extends StatefulWidget {
   final Model model;
@@ -21,13 +19,13 @@ class _ModelPageState extends State<ModelPage> {
       child: Scaffold(
           backgroundColor: _seciliRenk,
           appBar: AppBar(
-            title: Text(
-              widget.model.adi,
-              style: TextStyle(
-                  color: _seciliRenk == Colors.white
-                      ? Colors.black
-                      : Colors.white),
-            ),
+            title: Text(widget.model.adi,
+                style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                        color: _seciliRenk == Colors.white
+                            ? Colors.black
+                            : Colors.white),
+                    fontWeight: FontWeight.w500)),
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.transparent,
@@ -77,7 +75,7 @@ class _ModelPageState extends State<ModelPage> {
                     //height: 220,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
-                      color: Colors.orange,
+                      color: Color.fromARGB(255, 34, 126, 167),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30)),
@@ -94,21 +92,21 @@ class _ModelPageState extends State<ModelPage> {
                           /*const SizedBox(
                             height: 15,
                           ),*/
-                          Text(
-                            widget.model.adi,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25),
-                          ),
+                          Text(widget.model.adi,
+                              style: GoogleFonts.ptSans(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25),
+                              )),
                           const SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            widget.model.aciklama,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 13),
-                          ),
+                          Text(widget.model.aciklama,
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 13),
+                              )),
                           const SizedBox(
                             height: 10,
                           ),
@@ -120,10 +118,11 @@ class _ModelPageState extends State<ModelPage> {
                                     MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Text(
-                                    "Arkaplan Rengi:",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
+                                  Text("Arkaplan Rengi:",
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            color: Colors.white),
+                                      )),
                                   DropdownButton<Color>(
                                       dropdownColor: Colors.black,
                                       elevation: 0,
@@ -134,57 +133,60 @@ class _ModelPageState extends State<ModelPage> {
                                         Icons.arrow_drop_down,
                                         color: Colors.white,
                                       ),
-                                      hint: const Text(
+                                      hint: Text(
                                         "Arkaplan Rengi",
-                                        style: TextStyle(color: Colors.white),
+                                        style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white),
+                                        ),
                                       ),
-                                      items: const [
+                                      items: [
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Beyaz",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Beyaz",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.white,
                                         ),
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Siyah",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Siyah",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.black,
                                         ),
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Kırmızı",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Kırmızı",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.red,
                                         ),
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Mavi",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Mavi",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.blue,
                                         ),
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Sarı",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Sarı",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.yellow,
                                         ),
                                         DropdownMenuItem(
-                                          child: Text(
-                                            "Yeşil",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
+                                          child: Text("Yeşil",
+                                              style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.white),
+                                              )),
                                           value: Colors.green,
                                         ),
                                       ],

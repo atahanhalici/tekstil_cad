@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,39 +14,51 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('assets/login/arkaplan.jpg'),
-            fit: BoxFit.cover,
-          )),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
+        body: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('assets/login_background.jpg'),
+              fit: BoxFit.cover,
+            )),
+            child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(
-                      top: 200,
+                      top: MediaQuery.of(context).size.height < 700
+                          ? 50
+                          : MediaQuery.of(context).size.height < 800
+                              ? 150
+                              : MediaQuery.of(context).size.height < 900
+                                  ? 250
+                                  : MediaQuery.of(context).size.height < 1000
+                                      ? 350
+                                      : MediaQuery.of(context).size.height <
+                                              1100
+                                          ? 450
+                                          : MediaQuery.of(context).size.height <
+                                                  1200
+                                              ? 550
+                                              : 650,
                       left: 50,
                     ),
-                    child: Text(
-                      'Giriş Yap',
-                      style: TextStyle(
-                          fontSize: 48,
-                          // fontFamily: 'Poppins-Medium',
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
-                    ),
+                    child: Text('Giriş Yap',
+                        style: GoogleFonts.robotoSlab(
+                          textStyle: const TextStyle(
+                              fontSize: 48,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 20,
                       right: 0,
-                      bottom: 0,
+                      bottom: 20,
                       left: 20,
                     ),
                     child: LayerOne(context),
@@ -60,8 +73,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool isChecked = false;
+  // ignore: non_constant_identifier_names
   Widget LayerThree(BuildContext context) {
-    const Color checkbox = Colors.orange;
+    const Color checkbox = Color.fromARGB(255, 34, 126, 167);
 
     const Color hintText = Color(0xFFB4B4B4);
 
@@ -76,38 +90,41 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            'E-Mail',
-            style: TextStyle(
-                // fontFamily: 'Poppins-Medium',
-                fontSize: 24,
-                fontWeight: FontWeight.w500),
-          ),
-          const TextField(
+          Text('E-Mail',
+              style: GoogleFonts.ptSans(
+                textStyle: const TextStyle(
+                    // fontFamily: 'Poppins-Medium',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              )),
+          TextField(
             decoration: InputDecoration(
-              focusColor: Colors.orange,
-              border: UnderlineInputBorder(),
-              hintText: 'E-Mail',
-              hintStyle: TextStyle(color: hintText),
-            ),
+                focusColor: Color.fromARGB(255, 34, 126, 167),
+                border: UnderlineInputBorder(),
+                hintText: 'E-Mail',
+                hintStyle: GoogleFonts.ptSans(
+                  textStyle: const TextStyle(color: hintText),
+                )),
           ),
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            'Şifre',
-            style: TextStyle(
-                // fontFamily: 'Poppins-Medium',
-                fontSize: 24,
-                fontWeight: FontWeight.w500),
-          ),
+          Text('Şifre',
+              style: GoogleFonts.ptSans(
+                textStyle: const TextStyle(
+                    // fontFamily: 'Poppins-Medium',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              )),
           TextField(
             obscureText: _gizli,
             decoration: InputDecoration(
-              focusColor: Colors.orange,
+              focusColor: const Color.fromARGB(255, 34, 126, 167),
               border: const UnderlineInputBorder(),
               hintText: 'Şifre',
-              hintStyle: const TextStyle(color: hintText),
+              hintStyle: GoogleFonts.ptSans(
+                textStyle: const TextStyle(color: hintText),
+              ),
               suffixIcon: IconButton(
                   onPressed: () {
                     setState(() {
@@ -124,15 +141,16 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: const Text(
-              'Şifremi Unuttum',
-              textAlign: TextAlign.end,
-              style: TextStyle(
-                  color: Colors.orangeAccent,
-                  fontSize: 16,
-                  // fontFamily: 'Poppins-Medium',
-                  fontWeight: FontWeight.w600),
-            ),
+            child: Text('Şifremi Unuttum',
+                textAlign: TextAlign.end,
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                      color: Color.fromARGB(255, 34, 126, 167),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600
+                      // fontFamily: 'Poppins-Medium',
+                      ),
+                )),
           ),
           const SizedBox(
             height: 10,
@@ -158,37 +176,38 @@ class _LoginPageState extends State<LoginPage> {
                         isChecked = !isChecked;
                       });
                     },
-                    child: const Text(
-                      'Beni Hatırla',
-                      style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontSize: 16,
-                          //fontFamily: 'Poppins-Medium',
-                          fontWeight: FontWeight.w500),
-                    ),
+                    child: Text('Beni Hatırla',
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              color: Color.fromARGB(255, 34, 126, 167),
+                              fontSize: 16,
+                              // fontFamily: 'Poppins-Medium',
+                              fontWeight: FontWeight.w500),
+                        )),
                   ),
                 ],
               ),
               Container(
-                width: 99,
-                height: 35,
+                // width: 99,
+                // height: 35,
                 decoration: const BoxDecoration(
-                  color: Colors.orange,
+                  color: Color.fromARGB(255, 34, 126, 167),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20)),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'Giriş Yap',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        //fontFamily: 'Poppins-Medium',
-                        fontWeight: FontWeight.w400),
-                  ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                  child: Text('Giriş Yap',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            //fontFamily: 'Poppins-Medium',
+                            fontWeight: FontWeight.w400),
+                      )),
                 ),
               ),
             ],
@@ -198,6 +217,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget LayerOne(BuildContext context) {
     const Color layerOneBg = Color(0x80FFFFFF);
     return Container(
@@ -216,6 +236,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget LayerTwo(BuildContext context) {
     const Color layerTwoBg = Color(0xFFE9FFF6);
     return Container(

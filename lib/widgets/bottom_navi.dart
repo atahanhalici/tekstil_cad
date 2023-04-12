@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tekstil_cad/pages/login_page.dart';
-import 'package:tekstil_cad/pages/model_page.dart';
-import 'package:tekstil_cad/pages/my_models_page.dart';
-import 'package:tekstil_cad/pages/profile_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 
 class BottomNavigationBars extends StatelessWidget {
@@ -24,7 +20,7 @@ class BottomNavigationBars extends StatelessWidget {
             child: Container(
               height: 55,
               decoration: BoxDecoration(
-                  color: Colors.orange,
+                  color: const Color.fromARGB(255, 34, 126, 167),
                   borderRadius: BorderRadius.circular(20.0)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

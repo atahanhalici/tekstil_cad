@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/user.dart';
 import 'package:tekstil_cad/pages/login_page.dart';
@@ -24,8 +25,8 @@ class MyAccount extends StatelessWidget {
                   SizedBox(
                       height: MediaQuery.of(context).size.width <
                               MediaQuery.of(context).size.height
-                          ? MediaQuery.of(context).size.height - 480
-                          : MediaQuery.of(context).size.height - 200,
+                          ? MediaQuery.of(context).size.height - 505
+                          : MediaQuery.of(context).size.height - 225,
                       width: MediaQuery.of(context).size.width,
                       child: Image.asset(
                         "assets/logo.jpeg",
@@ -52,7 +53,7 @@ class MyAccount extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return LoginPage();
+                              return const LoginPage();
                             },
                           ),
                         );
@@ -66,12 +67,12 @@ class MyAccount extends StatelessWidget {
               ),
               Container(
                   decoration: const BoxDecoration(
-                    color: Colors.orange,
+                    color: Color.fromARGB(255, 34, 126, 167),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
                   ),
-                  height: 480,
+                  height: 505,
                   child: Container(
                     margin: const EdgeInsets.symmetric(
                         horizontal: 20.0, vertical: 20),
@@ -80,13 +81,13 @@ class MyAccount extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "Hesabım",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
+                          Text("Hesabım",
+                              style: GoogleFonts.ptSans(
+                                textStyle: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
                           const SizedBox(
                             height: 10,
                           ),
@@ -116,15 +117,18 @@ class MyAccount extends StatelessWidget {
                               height: 40,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.black,
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 24, 24, 24),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10))),
                                 onPressed: () {},
-                                child: const Text(
-                                  "Bilgilerini Güncelle",
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                child: Text("Bilgilerini Güncelle",
+                                    style: GoogleFonts.ptSans(
+                                      textStyle: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    )),
                               ),
                             ),
                           ),
@@ -140,11 +144,13 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: const Text(
-                                      "Hakkımızda",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.white),
-                                    )),
+                                    child: Text("Hakkımızda",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.ptSans(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ))),
                               ),
                               SizedBox(
                                 width:
@@ -152,11 +158,13 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: const Text(
-                                      "Sıkça Sorulan Sorular",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.white),
-                                    )),
+                                    child: Text("Sıkça Sorulan Sorular",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.ptSans(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ))),
                               ),
                               SizedBox(
                                 width:
@@ -164,32 +172,34 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: const Text(
-                                      "Gizlilik Sözleşmesi",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.white),
-                                    )),
+                                    child: Text("Gizlilik Sözleşmesi",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.ptSans(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ))),
                               ),
                             ],
                           ),
                           const SizedBox(
                             height: 20,
                           ),
-                          const Center(
-                            child: Text(
-                              "© 2023 TekstilCad",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
+                          Center(
+                            child: Text("© 2023 TekstilCad",
+                                style: GoogleFonts.ptSans(
+                                  textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                )),
                           ),
-                          const Center(
-                            child: Text(
-                              "Tüm Hakları Saklıdır",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
+                          Center(
+                            child: Text("Tüm Hakları Saklıdır",
+                                style: GoogleFonts.ptSans(
+                                  textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                )),
                           ),
                           const SizedBox(
                             height: 20,
@@ -216,10 +226,12 @@ class MyAccount extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               ozellik + " :",
-              style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
               textAlign: TextAlign.start,
             ),
           ),
@@ -230,9 +242,11 @@ class MyAccount extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               metin,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.white,
+              style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
+                ),
               ),
               textAlign: TextAlign.end,
             ),

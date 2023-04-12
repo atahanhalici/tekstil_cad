@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
@@ -15,18 +16,23 @@ class MyModelsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text("Modellerim"),
+          title: Text("Modellerim",
+              style: GoogleFonts.montserrat(
+                textStyle: const TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.w500),
+              )),
           elevation: 0,
           centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: Stack(
           children: [
             Center(
               child: _model.state == ViewState.geliyor
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : _model.state == ViewState.geldi
                       ? kaliplarim(_model, context)
-                      : Text("HATA"),
+                      : const Text("HATA"),
             ),
             Positioned(
                 left: 25,
@@ -52,27 +58,28 @@ class MyModelsPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text(
-                "Tüm Kalıplarınız Burada Listelenmektedir.",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
-              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Text("Tüm Kalıplarınız Burada Listelenmektedir.",
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.ptSans(
+                    textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  )),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
-                "Dilediğiniz tasarıma dokunarak 3 Boyutlu bir şekilde inceleyebilirsiniz!",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),
-              ),
+                  "Dilediğiniz tasarıma dokunarak 3 Boyutlu bir şekilde inceleyebilirsiniz!",
+                  textAlign: TextAlign.start,
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                    ),
+                  )),
             ),
             const SizedBox(
               height: 20,
@@ -107,7 +114,7 @@ class MyModelsPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: const Color.fromARGB(255, 24, 24, 24),
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -146,9 +153,10 @@ class MyModelsPage extends StatelessWidget {
                                       _model.asd[index].adi,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold)),
+                                      style: GoogleFonts.ptSans(
+                                          textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold))),
                                 ),
                               ),
                               Container(
@@ -157,12 +165,13 @@ class MyModelsPage extends StatelessWidget {
                                 child: SizedBox(
                                   child: Text(_model.asd[index].aciklama,
                                       textAlign: TextAlign.start,
-                                      maxLines: 4,
+                                      maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
                                         fontSize: 11,
                                         color: Colors.white,
-                                      )),
+                                      ))),
                                 ),
                               ),
                             ],

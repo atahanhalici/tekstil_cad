@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tekstil_cad/models/user.dart';
 import 'package:tekstil_cad/pages/home_page.dart';
 import 'package:tekstil_cad/route_generator.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
-import 'package:tekstil_cad/widgets/bottom_navi.dart';
 import 'package:tekstil_cad/locator.dart';
 
 void main() {
@@ -24,7 +22,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tekstil Cad',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+         colorScheme: ColorScheme.fromSwatch().copyWith(
+      primary: const Color.fromARGB(255, 34, 126, 167),
+    ),
       ),
       home: const MyHomePage(),
       onGenerateRoute: RouteGenerator.rotaOlustur,
@@ -44,6 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
     UserViewModel _userModel =
         Provider.of<UserViewModel>(context, listen: false);
     _userModel.userGetir();
-    return HomePage();
+    return const HomePage();
   }
 }

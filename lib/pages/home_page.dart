@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
@@ -51,29 +52,36 @@ class HomePage extends StatelessWidget {
                             animatedTexts: [
                                 TypewriterAnimatedText(
                                     "Merhaba " + _userModel.user.adi,
-                                    textStyle: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
+                                    textStyle: GoogleFonts.ptSans(
+                                        textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold)),
                                     speed: const Duration(milliseconds: 40),
                                     cursor: ""),
                               ])
-                        : const Text(
-                            "TekstilCad",
-                            style: TextStyle(
+                        : Text("TekstilCad",
+                            style: GoogleFonts.ptSans(
+                                textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold))
+                            /*TextStyle(
                                 color: Colors.black,
                                 fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
+                                fontWeight: FontWeight.bold),*/
+                            ),
                     AnimatedTextKit(
                         totalRepeatCount: 1,
                         isRepeatingAnimation: false,
                         animatedTexts: [
                           TypewriterAnimatedText(
                               "Tekstil Cad Mobil ile kalıp tasarımlarınızı istediğiniz anda ve istediğiniz yerde saniyeler içerisinde görüntüleme imkanına sahipsiniz. Tasarımlarınızı 3 Boyutlu olarak inceleyebilmek ve daha fazlası için alttaki menüyü kullanabilirsiniz. Ayrıca detaylı eğitime tekrar erişebilmek adına profilinizden uygulama rehberini inceleyebilirsiniz.",
-                              textStyle: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
+                              textStyle: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                ),
                               ),
                               speed: const Duration(milliseconds: 30),
                               cursor: "")
@@ -97,7 +105,7 @@ class HomePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Container(
                               decoration: BoxDecoration(
-                                  color: Colors.black,
+                                  color: const Color.fromARGB(255, 24, 24, 24),
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Column(
                                 children: [
@@ -112,9 +120,10 @@ class HomePage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10.0),
                                     child: Text(ozellikler[index],
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold)),
+                                        style: GoogleFonts.robotoSlab(
+                                            textStyle: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500))),
                                   )
                                 ],
                               ));
@@ -123,25 +132,28 @@ class HomePage extends StatelessWidget {
                       height: 20,
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: const Text(
-                        "TekstilCad",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          "TekstilCad",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.ptSans(
+                            textStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      child: const Text(
+                      child: Text(
                         "- Created by FABA -",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: GoogleFonts.ptSans(
+                          textStyle: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     const SizedBox(
