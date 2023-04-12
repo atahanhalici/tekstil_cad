@@ -1,4 +1,4 @@
-import 'package:tekstil_cad/models/3d_model.dart';
+import 'package:tekstil_cad/models/model.dart';
 import 'package:tekstil_cad/models/user.dart';
 
 class DatabaseService {

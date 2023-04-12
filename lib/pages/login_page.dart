@@ -99,8 +99,8 @@ class _LoginPageState extends State<LoginPage> {
               )),
           TextField(
             decoration: InputDecoration(
-                focusColor: Color.fromARGB(255, 34, 126, 167),
-                border: UnderlineInputBorder(),
+                focusColor:const Color.fromARGB(255, 34, 126, 167),
+                border:const UnderlineInputBorder(),
                 hintText: 'E-Mail',
                 hintStyle: GoogleFonts.ptSans(
                   textStyle: const TextStyle(color: hintText),

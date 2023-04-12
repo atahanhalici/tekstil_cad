@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tekstil_cad/locator.dart';
-import 'package:tekstil_cad/models/3d_model.dart';
+import 'package:tekstil_cad/models/model.dart';
 import 'package:tekstil_cad/repository/repo.dart';
 
 enum ViewState { geliyor, geldi, hata }
