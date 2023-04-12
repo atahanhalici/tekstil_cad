@@ -108,7 +108,7 @@ class SettingsPage extends StatelessWidget {
                                     "dil".tr() + " :",
                                     style: GoogleFonts.poppins(
                                       textStyle: const TextStyle(
-                                          fontSize: 14,
+                                          fontSize: 16,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),

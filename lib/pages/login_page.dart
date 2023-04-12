@@ -213,6 +213,78 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
+          Row(
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8, top: 10),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "dil".tr() + " :",
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8, top: 10),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: DropdownButton<String>(
+                      dropdownColor: Colors.white,
+                      elevation: 0,
+                      underline: Container(
+                        height: 0,
+                      ),
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.black,
+                      ),
+                      hint: Text(
+                        'dil'.tr(),
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(color: Colors.black),
+                        ),
+                      ),
+                      items: [
+                        DropdownMenuItem(
+                          child: Text('turkce'.tr(),
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(color: Colors.black),
+                              )),
+                          value: "Türkçe",
+                        ),
+                        DropdownMenuItem(
+                          child: Text('ingilizce'.tr(),
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(color: Colors.black),
+                              )),
+                          value: "İngilizce",
+                        ),
+                      ],
+                      value: "dil".tr() == "Dil" ? "Türkçe" : "İngilizce",
+                      onChanged: (String? yeni) {
+                        if (yeni == "Türkçe" || yeni == "Turkish") {
+                          if ("dil".tr() != "Dil") {
+                            context.setLocale(const Locale('tr', 'TR'));
+                          }
+                        } else if (yeni == "İngilizce" || yeni == "English") {
+                          if ("dil".tr() != "Language") {
+                            context.setLocale(const Locale('en', 'US'));
+                          }
+                        }
+                      }),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
