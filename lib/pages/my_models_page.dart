@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,11 +16,11 @@ class MyModelsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("Modellerim",
+          title: Text("modellerim",
               style: GoogleFonts.montserrat(
                 textStyle: const TextStyle(
                     color: Colors.black, fontWeight: FontWeight.w500),
-              )),
+              )).tr(),
           elevation: 0,
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
@@ -58,28 +59,25 @@ class MyModelsPage extends StatelessWidget {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text("Tüm Kalıplarınız Burada Listelenmektedir.",
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.ptSans(
-                    textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold),
-                  )),
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Text("modellerimaciklama",
+                    textAlign: TextAlign.start,
+                    style: GoogleFonts.ptSans(
+                      textStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    )).tr()),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text(
-                  "Dilediğiniz tasarıma dokunarak 3 Boyutlu bir şekilde inceleyebilirsiniz!",
-                  textAlign: TextAlign.start,
-                  style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  )),
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: Text("modellerimdetay",
+                    textAlign: TextAlign.start,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    )).tr()),
             const SizedBox(
               height: 20,
             ),

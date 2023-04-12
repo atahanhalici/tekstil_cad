@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,13 +13,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     UserViewModel _userModel =
         Provider.of<UserViewModel>(context, listen: true);
-    List ozellikler = [
-      "Kalıplarınızı İnceleyin",
-      "İstediğiniz Yerden Erişin",
-      "Profilinize Ulaşın"
-    ];
+    List ozellikler = ['ozellik1'.tr(), 'ozellik2'.tr(), 'ozellik3'.tr()];
 
-    final _zaman = TimeOfDay.now();
+    var _zaman = TimeOfDay.now();
+    var selamlama = _zaman.hour >= 6 && _zaman.hour < 12
+        ? 'gunaydin'.tr()
+        : _zaman.hour >= 12 && _zaman.hour < 18
+            ? 'merhaba'.tr()
+            : _zaman.hour >= 18 && _zaman.hour < 22
+                ? 'iyiaksamlar'.tr()
+                : 'iyigeceler'.tr();
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -48,73 +52,20 @@ class HomePage extends StatelessWidget {
                       height: 20,
                     ),
                     _userModel.state == ViewState.geldi
-                        ? _zaman.hour >= 6 && _zaman.hour < 12
-                            ? AnimatedTextKit(
-                                totalRepeatCount: 1,
-                                isRepeatingAnimation: true,
-                                animatedTexts: [
-                                    TypewriterAnimatedText(
-                                        "Günaydın " + _userModel.user.adi,
-                                        textStyle: GoogleFonts.ptSans(
-                                            textStyle: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.bold)),
-                                        speed: const Duration(milliseconds: 40),
-                                        cursor: ""),
-                                  ])
-                            : _zaman.hour >= 12 && _zaman.hour < 18
-                                ? AnimatedTextKit(
-                                    totalRepeatCount: 1,
-                                    isRepeatingAnimation: true,
-                                    animatedTexts: [
-                                        TypewriterAnimatedText(
-                                            "Merhaba " + _userModel.user.adi,
-                                            textStyle: GoogleFonts.ptSans(
-                                                textStyle: const TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 25,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                            speed: const Duration(
-                                                milliseconds: 40),
-                                            cursor: ""),
-                                      ])
-                                : _zaman.hour >= 18 && _zaman.hour < 22
-                                    ? AnimatedTextKit(
-                                        totalRepeatCount: 1,
-                                        isRepeatingAnimation: true,
-                                        animatedTexts: [
-                                            TypewriterAnimatedText(
-                                                "İyi Akşamlar " +
-                                                    _userModel.user.adi,
-                                                textStyle: GoogleFonts.ptSans(
-                                                    textStyle: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                                speed: const Duration(
-                                                    milliseconds: 40),
-                                                cursor: ""),
-                                          ])
-                                    : AnimatedTextKit(
-                                        totalRepeatCount: 1,
-                                        isRepeatingAnimation: true,
-                                        animatedTexts: [
-                                            TypewriterAnimatedText(
-                                                "İyi Geceler " +
-                                                    _userModel.user.adi,
-                                                textStyle: GoogleFonts.ptSans(
-                                                    textStyle: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                                speed: const Duration(
-                                                    milliseconds: 40),
-                                                cursor: ""),
-                                          ])
+                        ? AnimatedTextKit(
+                            totalRepeatCount: 1,
+                            isRepeatingAnimation: true,
+                            animatedTexts: [
+                                TypewriterAnimatedText(
+                                    selamlama + ' ' + _userModel.user.adi,
+                                    textStyle: GoogleFonts.ptSans(
+                                        textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold)),
+                                    speed: const Duration(milliseconds: 40),
+                                    cursor: ""),
+                              ])
                         : Text("TekstilCad",
                             style: GoogleFonts.ptSans(
                                 textStyle: const TextStyle(
@@ -125,8 +76,7 @@ class HomePage extends StatelessWidget {
                         totalRepeatCount: 1,
                         isRepeatingAnimation: false,
                         animatedTexts: [
-                          TypewriterAnimatedText(
-                              "Tekstil Cad Mobil ile kalıp tasarımlarınızı istediğiniz anda ve istediğiniz yerde saniyeler içerisinde görüntüleme imkanına sahipsiniz. Tasarımlarınızı 3 Boyutlu olarak inceleyebilmek ve daha fazlası için alttaki menüyü kullanabilirsiniz. Ayrıca detaylı eğitime tekrar erişebilmek adına profilinizden uygulama rehberini inceleyebilirsiniz.",
+                          TypewriterAnimatedText("aciklama".tr(),
                               textStyle: GoogleFonts.poppins(
                                 textStyle: const TextStyle(
                                   color: Colors.black,

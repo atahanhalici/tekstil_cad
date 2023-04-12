@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/user.dart';
-import 'package:tekstil_cad/pages/login_page.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 
 class MyAccount extends StatelessWidget {
@@ -44,25 +44,6 @@ class MyAccount extends StatelessWidget {
                           : Icons.arrow_back),
                     ),
                   ),
-                  Positioned(
-                    left: 45,
-                    top: 15,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const LoginPage();
-                            },
-                          ),
-                        );
-                      },
-                      child: Icon(defaultTargetPlatform == TargetPlatform.iOS
-                          ? Icons.arrow_back_ios
-                          : Icons.arrow_back),
-                    ),
-                  )
                 ],
               ),
               Container(
@@ -89,33 +70,33 @@ class MyAccount extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Hesabım",
+                          Text("hesabim",
                               style: GoogleFonts.ptSans(
                                 textStyle: const TextStyle(
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
-                              )),
+                              )).tr(),
                           const SizedBox(
                             height: 10,
                           ),
-                          row("Ad", user.adi),
+                          row("ad".tr(), user.adi),
                           const SizedBox(
                             height: 10,
                           ),
-                          row("Soyad", user.soyadi),
+                          row("soyad".tr(), user.soyadi),
                           const SizedBox(
                             height: 10,
                           ),
-                          row("Kullanıcı Id", user.kullanici_id),
+                          row("kullanici_id".tr(), user.kullanici_id),
                           const SizedBox(
                             height: 10,
                           ),
-                          row("Şirket", user.sirket),
+                          row("sirket".tr(), user.sirket),
                           const SizedBox(
                             height: 10,
                           ),
-                          row("E-Mail", user.mail),
+                          row("mail".tr(), user.mail),
                           const SizedBox(
                             height: 40,
                           ),
@@ -131,12 +112,12 @@ class MyAccount extends StatelessWidget {
                                         borderRadius:
                                             BorderRadius.circular(10))),
                                 onPressed: () {},
-                                child: Text("Bilgilerini Güncelle",
+                                child: Text("bilgiguncelle",
                                     style: GoogleFonts.ptSans(
                                       textStyle: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
-                                    )),
+                                    )).tr(),
                               ),
                             ),
                           ),
@@ -152,13 +133,13 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: Text("Hakkımızda",
+                                    child: Text("hakkimizda",
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.ptSans(
                                           textStyle: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold),
-                                        ))),
+                                        )).tr()),
                               ),
                               SizedBox(
                                 width:
@@ -166,13 +147,13 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: Text("Sıkça Sorulan Sorular",
+                                    child: Text("SSS",
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.ptSans(
                                           textStyle: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold),
-                                        ))),
+                                        )).tr()),
                               ),
                               SizedBox(
                                 width:
@@ -180,13 +161,13 @@ class MyAccount extends StatelessWidget {
                                         3,
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: Text("Gizlilik Sözleşmesi",
+                                    child: Text("gizlilik",
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.ptSans(
                                           textStyle: const TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold),
-                                        ))),
+                                        )).tr()),
                               ),
                             ],
                           ),
@@ -202,12 +183,12 @@ class MyAccount extends StatelessWidget {
                                 )),
                           ),
                           Center(
-                            child: Text("Tüm Hakları Saklıdır",
+                            child: Text("tumhaklarisakli",
                                 style: GoogleFonts.ptSans(
                                   textStyle: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
-                                )),
+                                )).tr(),
                           ),
                           const SizedBox(
                             height: 20,

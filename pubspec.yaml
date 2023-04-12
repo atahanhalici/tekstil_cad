@@ -39,6 +39,7 @@ dependencies:
   provider: ^6.0.5
   animated_text_kit: ^4.2.2
   google_fonts: ^4.0.3
+  easy_localization: ^3.0.1
  
 
 dev_dependencies:
@@ -67,6 +68,7 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/lang/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

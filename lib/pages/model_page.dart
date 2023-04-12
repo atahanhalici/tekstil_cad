@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
@@ -76,7 +77,7 @@ class _ModelPageState extends State<ModelPage> {
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 34, 126, 167),
-                      borderRadius:const BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30)),
                       boxShadow: [
@@ -84,7 +85,8 @@ class _ModelPageState extends State<ModelPage> {
                           color: Colors.grey.withOpacity(0.8),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset:const Offset(0, -5), // changes position of shadow
+                          offset:
+                              const Offset(0, -5), // changes position of shadow
                         ),
                       ],
                     ),
@@ -96,7 +98,7 @@ class _ModelPageState extends State<ModelPage> {
                           height: 3,
                           decoration: const BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                         ),
                         Container(
@@ -106,7 +108,9 @@ class _ModelPageState extends State<ModelPage> {
                             // mainAxisAlignment: MainAxisAlignment.start,
                             //crossAxisAlignment: CrossAxisAlignment.start,
                             crossAxisAlignment: WrapCrossAlignment.start,
-                            direction: Axis.horizontal,
+                            direction: widget.model.aciklama.length < 45
+                                ? Axis.vertical
+                                : Axis.horizontal,
                             children: [
                               /*const SizedBox(
                                 height: 15,
@@ -138,11 +142,11 @@ class _ModelPageState extends State<ModelPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Text("Arkaplan Rengi:",
+                                      Text('arkaplanrengi',
                                           style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                                 color: Colors.white),
-                                          )),
+                                          )).tr(),
                                       DropdownButton<Color>(
                                           dropdownColor: Colors.black,
                                           elevation: 0,
@@ -154,59 +158,59 @@ class _ModelPageState extends State<ModelPage> {
                                             color: Colors.white,
                                           ),
                                           hint: Text(
-                                            "Arkaplan Rengi",
+                                            'arkaplanrengi',
                                             style: GoogleFonts.poppins(
                                               textStyle: const TextStyle(
                                                   color: Colors.white),
                                             ),
-                                          ),
+                                          ).tr(),
                                           items: [
                                             DropdownMenuItem(
-                                              child: Text("Beyaz",
+                                              child: Text('beyaz',
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.white,
                                             ),
                                             DropdownMenuItem(
-                                              child: Text("Siyah",
+                                              child: Text('siyah',
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.black,
                                             ),
                                             DropdownMenuItem(
-                                              child: Text("Kırmızı",
+                                              child: Text("kirmizi",
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.red,
                                             ),
                                             DropdownMenuItem(
-                                              child: Text("Mavi",
+                                              child: Text("mavi",
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.blue,
                                             ),
                                             DropdownMenuItem(
-                                              child: Text("Sarı",
+                                              child: Text("sari",
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.yellow,
                                             ),
                                             DropdownMenuItem(
-                                              child: Text("Yeşil",
+                                              child: Text("yesil",
                                                   style: GoogleFonts.poppins(
                                                     textStyle: const TextStyle(
                                                         color: Colors.white),
-                                                  )),
+                                                  )).tr(),
                                               value: Colors.green,
                                             ),
                                           ],

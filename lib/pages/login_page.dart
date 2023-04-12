@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -46,13 +47,13 @@ class _LoginPageState extends State<LoginPage> {
                                               : 650,
                       left: 50,
                     ),
-                    child: Text('Giriş Yap',
+                    child: Text('girisyap',
                         style: GoogleFonts.robotoSlab(
                           textStyle: const TextStyle(
                               fontSize: 48,
                               fontWeight: FontWeight.w500,
                               color: Colors.white),
-                        )),
+                        )).tr(),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -90,18 +91,18 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('E-Mail',
+          Text('mail',
               style: GoogleFonts.ptSans(
                 textStyle: const TextStyle(
                     // fontFamily: 'Poppins-Medium',
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
-              )),
+              )).tr(),
           TextField(
             decoration: InputDecoration(
-                focusColor:const Color.fromARGB(255, 34, 126, 167),
-                border:const UnderlineInputBorder(),
-                hintText: 'E-Mail',
+                focusColor: const Color.fromARGB(255, 34, 126, 167),
+                border: const UnderlineInputBorder(),
+                hintText: 'mail'.tr(),
                 hintStyle: GoogleFonts.ptSans(
                   textStyle: const TextStyle(color: hintText),
                 )),
@@ -109,19 +110,19 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(
             height: 20,
           ),
-          Text('Şifre',
+          Text('sifre',
               style: GoogleFonts.ptSans(
                 textStyle: const TextStyle(
                     // fontFamily: 'Poppins-Medium',
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
-              )),
+              )).tr(),
           TextField(
             obscureText: _gizli,
             decoration: InputDecoration(
               focusColor: const Color.fromARGB(255, 34, 126, 167),
               border: const UnderlineInputBorder(),
-              hintText: 'Şifre',
+              hintText: 'sifre'.tr(),
               hintStyle: GoogleFonts.ptSans(
                 textStyle: const TextStyle(color: hintText),
               ),
@@ -141,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Text('Şifremi Unuttum',
+            child: Text('sifremiunuttum'.tr(),
                 textAlign: TextAlign.end,
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
@@ -176,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                         isChecked = !isChecked;
                       });
                     },
-                    child: Text('Beni Hatırla',
+                    child: Text('benihatirla'.tr(),
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                               color: Color.fromARGB(255, 34, 126, 167),
@@ -199,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                  child: Text('Giriş Yap',
+                  child: Text('girisyap'.tr(),
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(

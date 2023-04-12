@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +14,11 @@ class ProfilePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: Text("Profil",
+            title: Text("profil",
                 style: GoogleFonts.montserrat(
                   textStyle: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w500),
-                )),
+                )).tr(),
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.transparent,
@@ -32,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       ProfileMenu(
-                        text: "Hesabım",
+                        text: "hesabim".tr(),
                         icon: Icons.person,
                         press: () {
                           defaultTargetPlatform == TargetPlatform.android
@@ -55,19 +56,24 @@ class ProfilePage extends StatelessWidget {
                         },
                       ),
                       ProfileMenu(
-                        text: "Ayarlar",
+                        text: "ayarlar".tr(),
                         icon: Icons.settings,
-                        press: () {},
+                        press: () {
+                          Navigator.pushNamed(context, '/ayarlar',
+                              arguments: {});
+                        },
                       ),
                       ProfileMenu(
-                        text: "Yardım Merkezi",
+                        text: "yardimmerkezi".tr(),
                         icon: Icons.question_answer,
                         press: () {},
                       ),
                       ProfileMenu(
-                        text: "Çıkış Yap",
+                        text: "cikisyap".tr(),
                         icon: Icons.logout,
-                        press: () {},
+                        press: () {
+                          _cikis(context);
+                        },
                       ),
                       const SizedBox(
                         height: 80,
@@ -120,6 +126,66 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  _cikis(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'cikisyap'.tr(),
+            style: GoogleFonts.ptSans(
+              textStyle: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'cikisyapemin'.tr(),
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'hayir'.tr(),
+                style: GoogleFonts.ptSans(
+                  textStyle: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text(
+                'evet'.tr(),
+                style: GoogleFonts.ptSans(
+                  textStyle: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+                Navigator.pushReplacementNamed(context, '/login',
+                    arguments: {});
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
