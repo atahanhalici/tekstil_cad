@@ -17,6 +17,8 @@ class HomePage extends StatelessWidget {
       "İstediğiniz Yerden Erişin",
       "Profilinize Ulaşın"
     ];
+
+    final _zaman = TimeOfDay.now();
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -46,31 +48,79 @@ class HomePage extends StatelessWidget {
                       height: 20,
                     ),
                     _userModel.state == ViewState.geldi
-                        ? AnimatedTextKit(
-                            totalRepeatCount: 1,
-                            isRepeatingAnimation: true,
-                            animatedTexts: [
-                                TypewriterAnimatedText(
-                                    "Merhaba " + _userModel.user.adi,
-                                    textStyle: GoogleFonts.ptSans(
-                                        textStyle: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold)),
-                                    speed: const Duration(milliseconds: 40),
-                                    cursor: ""),
-                              ])
+                        ? _zaman.hour >= 6 && _zaman.hour < 12
+                            ? AnimatedTextKit(
+                                totalRepeatCount: 1,
+                                isRepeatingAnimation: true,
+                                animatedTexts: [
+                                    TypewriterAnimatedText(
+                                        "Günaydın " + _userModel.user.adi,
+                                        textStyle: GoogleFonts.ptSans(
+                                            textStyle: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold)),
+                                        speed: const Duration(milliseconds: 40),
+                                        cursor: ""),
+                                  ])
+                            : _zaman.hour >= 12 && _zaman.hour < 18
+                                ? AnimatedTextKit(
+                                    totalRepeatCount: 1,
+                                    isRepeatingAnimation: true,
+                                    animatedTexts: [
+                                        TypewriterAnimatedText(
+                                            "Merhaba " + _userModel.user.adi,
+                                            textStyle: GoogleFonts.ptSans(
+                                                textStyle: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 25,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            speed: const Duration(
+                                                milliseconds: 40),
+                                            cursor: ""),
+                                      ])
+                                : _zaman.hour >= 18 && _zaman.hour < 22
+                                    ? AnimatedTextKit(
+                                        totalRepeatCount: 1,
+                                        isRepeatingAnimation: true,
+                                        animatedTexts: [
+                                            TypewriterAnimatedText(
+                                                "İyi Akşamlar " +
+                                                    _userModel.user.adi,
+                                                textStyle: GoogleFonts.ptSans(
+                                                    textStyle: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                speed: const Duration(
+                                                    milliseconds: 40),
+                                                cursor: ""),
+                                          ])
+                                    : AnimatedTextKit(
+                                        totalRepeatCount: 1,
+                                        isRepeatingAnimation: true,
+                                        animatedTexts: [
+                                            TypewriterAnimatedText(
+                                                "İyi Geceler " +
+                                                    _userModel.user.adi,
+                                                textStyle: GoogleFonts.ptSans(
+                                                    textStyle: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                speed: const Duration(
+                                                    milliseconds: 40),
+                                                cursor: ""),
+                                          ])
                         : Text("TekstilCad",
                             style: GoogleFonts.ptSans(
                                 textStyle: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 25,
-                                    fontWeight: FontWeight.bold))
-                            /*TextStyle(
-                                color: Colors.black,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),*/
-                            ),
+                                    fontWeight: FontWeight.bold))),
                     AnimatedTextKit(
                         totalRepeatCount: 1,
                         isRepeatingAnimation: false,

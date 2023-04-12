@@ -68,7 +68,7 @@ class MyAccount extends StatelessWidget {
               Container(
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 34, 126, 167),
-                    borderRadius:const BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
                     boxShadow: [
@@ -76,7 +76,7 @@ class MyAccount extends StatelessWidget {
                         color: Colors.grey.withOpacity(0.8),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset:const Offset(0, -5), // changes position of shadow
+                        offset: const Offset(0, -5),
                       ),
                     ],
                   ),
