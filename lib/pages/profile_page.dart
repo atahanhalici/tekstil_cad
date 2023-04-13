@@ -224,7 +224,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
+                Navigator.popUntil(
+                    context, (route) => route.settings.name == "/");
                 Navigator.pushReplacementNamed(context, '/login',
                     arguments: {});
               },

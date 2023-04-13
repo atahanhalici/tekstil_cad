@@ -179,10 +179,12 @@ class _SettingsPageState extends State<SettingsPage> {
                                           if ("dil".tr() != "Dil") {
                                             context.setLocale(
                                                 const Locale('tr', 'TR'));
-                                            Navigator.popUntil(context,
-                                                (route) => route.isFirst);
+                                            Navigator.popUntil(
+                                                context,
+                                                (route) =>
+                                                    route.settings.name == "/");
                                             Navigator.pushReplacementNamed(
-                                                context, '/anasayfa',
+                                                context, '/',
                                                 arguments: {});
                                             Navigator.pushNamed(
                                                 context, "/profil");
@@ -214,10 +216,12 @@ class _SettingsPageState extends State<SettingsPage> {
                                           if ("dil".tr() != "Language") {
                                             context.setLocale(
                                                 const Locale('en', 'US'));
-                                            Navigator.popUntil(context,
-                                                (route) => route.isFirst);
+                                            Navigator.popUntil(
+                                                context,
+                                                (route) =>
+                                                    route.settings.name == "/");
                                             Navigator.pushReplacementNamed(
-                                                context, '/anasayfa',
+                                                context, '/',
                                                 arguments: {});
                                             Navigator.pushNamed(
                                                 context, "/profil");
@@ -278,9 +282,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                       widget.dark = value;
                                       _themeModel.themeDark();
                                       Navigator.popUntil(
-                                          context, (route) => route.isFirst);
+                                          context,
+                                          (route) =>
+                                              route.settings.name == "/");
                                       Navigator.pushReplacementNamed(
-                                          context, '/anasayfa',
+                                          context, '/',
                                           arguments: {});
                                       Navigator.pushNamed(context, "/profil");
                                       defaultTargetPlatform ==
@@ -309,9 +315,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                       widget.dark = value;
                                       _themeModel.themeLight();
                                       Navigator.popUntil(
-                                          context, (route) => route.isFirst);
+                                          context,
+                                          (route) =>
+                                              route.settings.name == "/");
                                       Navigator.pushReplacementNamed(
-                                          context, '/anasayfa',
+                                          context, '/',
                                           arguments: {});
                                       Navigator.pushNamed(context, "/profil");
                                       defaultTargetPlatform ==
