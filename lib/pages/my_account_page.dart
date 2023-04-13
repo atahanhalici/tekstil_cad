@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/user.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 
 class MyAccount extends StatelessWidget {
@@ -11,11 +12,18 @@ class MyAccount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
+    Color _yaziRenk =
+        _themeModel.state == ThemeMod.dark ? Colors.white : Colors.black;
     UserViewModel _userModel =
         Provider.of<UserViewModel>(context, listen: true);
     User user = _userModel.user;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: _themeModel.state == ThemeMod.dark
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -28,10 +36,15 @@ class MyAccount extends StatelessWidget {
                           ? MediaQuery.of(context).size.height - 505
                           : MediaQuery.of(context).size.height - 225,
                       width: MediaQuery.of(context).size.width,
-                      child: Image.asset(
-                        "assets/logo.jpeg",
-                        fit: BoxFit.cover,
-                      )),
+                      child: _themeModel.state == ThemeMod.dark
+                          ? Image.asset(
+                              "assets/logo_koyu.jpg",
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              "assets/logo.jpeg",
+                              fit: BoxFit.cover,
+                            )),
                   Positioned(
                     left: 15,
                     top: 15,
@@ -39,27 +52,22 @@ class MyAccount extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(defaultTargetPlatform == TargetPlatform.iOS
-                          ? Icons.arrow_back_ios
-                          : Icons.arrow_back),
+                      child: Icon(
+                        defaultTargetPlatform == TargetPlatform.iOS
+                            ? Icons.arrow_back_ios
+                            : Icons.arrow_back,
+                        color: _yaziRenk,
+                      ),
                     ),
                   ),
                 ],
               ),
               Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 34, 126, 167),
-                    borderRadius: const BorderRadius.only(
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 34, 126, 167),
+                    borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.8),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, -5),
-                      ),
-                    ],
                   ),
                   height: 505,
                   child: Container(

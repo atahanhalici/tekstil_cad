@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
@@ -13,8 +14,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     UserViewModel _userModel =
         Provider.of<UserViewModel>(context, listen: true);
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
     List ozellikler = ['ozellik1'.tr(), 'ozellik2'.tr(), 'ozellik3'.tr()];
-
+    List resimler = [
+      "assets/inceleyin.jpg",
+      "assets/erisin.jpg",
+      "assets/kalip.jpeg"
+    ];
     var _zaman = TimeOfDay.now();
     var selamlama = _zaman.hour >= 6 && _zaman.hour < 12
         ? 'gunaydin'.tr()
@@ -25,6 +32,9 @@ class HomePage extends StatelessWidget {
                 : 'iyigeceler'.tr();
     return SafeArea(
       child: Scaffold(
+        backgroundColor: _themeModel.state == ThemeMod.dark
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         body: Stack(
           children: [
             Padding(
@@ -59,8 +69,11 @@ class HomePage extends StatelessWidget {
                                 TypewriterAnimatedText(
                                     selamlama + ' ' + _userModel.user.adi,
                                     textStyle: GoogleFonts.ptSans(
-                                        textStyle: const TextStyle(
-                                            color: Colors.black,
+                                        textStyle: TextStyle(
+                                            color: _themeModel.state ==
+                                                    ThemeMod.dark
+                                                ? Colors.white
+                                                : Colors.black,
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold)),
                                     speed: const Duration(milliseconds: 40),
@@ -68,8 +81,10 @@ class HomePage extends StatelessWidget {
                               ])
                         : Text("TekstilCad",
                             style: GoogleFonts.ptSans(
-                                textStyle: const TextStyle(
-                                    color: Colors.black,
+                                textStyle: TextStyle(
+                                    color: _themeModel.state == ThemeMod.dark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold))),
                     AnimatedTextKit(
@@ -78,8 +93,10 @@ class HomePage extends StatelessWidget {
                         animatedTexts: [
                           TypewriterAnimatedText("aciklama".tr(),
                               textStyle: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                  color: Colors.black,
+                                textStyle: TextStyle(
+                                  color: _themeModel.state == ThemeMod.dark
+                                      ? Colors.white
+                                      : Colors.black,
                                   fontSize: 12,
                                 ),
                               ),
@@ -105,7 +122,9 @@ class HomePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Container(
                               decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 24, 24, 24),
+                                  color: _themeModel.state == ThemeMod.dark
+                                      ? Colors.white24
+                                      : const Color.fromARGB(255, 24, 24, 24),
                                   borderRadius: BorderRadius.circular(10.0)),
                               child: Column(
                                 children: [
@@ -114,8 +133,7 @@ class HomePage extends StatelessWidget {
                                         top: 15, left: 15, right: 15),
                                     child: SizedBox(
                                         height: 220,
-                                        child:
-                                            Image.asset("assets/kalip.jpeg")),
+                                        child: Image.asset(resimler[index])),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10.0),
@@ -137,8 +155,10 @@ class HomePage extends StatelessWidget {
                           "TekstilCad",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.ptSans(
-                            textStyle: const TextStyle(
-                                color: Colors.black,
+                            textStyle: TextStyle(
+                                color: _themeModel.state == ThemeMod.dark
+                                    ? Colors.white
+                                    : Colors.black,
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -149,8 +169,10 @@ class HomePage extends StatelessWidget {
                         "- Created by FABA -",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.ptSans(
-                          textStyle: const TextStyle(
-                              color: Colors.black,
+                          textStyle: TextStyle(
+                              color: _themeModel.state == ThemeMod.dark
+                                  ? Colors.white
+                                  : Colors.black,
                               fontSize: 25,
                               fontWeight: FontWeight.bold),
                         ),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/model_page.dart';
 import 'package:tekstil_cad/view_models/model_viewmodel.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
 class MyModelsPage extends StatelessWidget {
@@ -11,19 +12,26 @@ class MyModelsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
     ModelViewModel _model = Provider.of<ModelViewModel>(context, listen: true);
+    Color _yaziRenk =
+        _themeModel.state == ThemeMod.dark ? Colors.white : Colors.black;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: _themeModel.state == ThemeMod.dark
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text("modellerim",
               style: GoogleFonts.montserrat(
-                textStyle: const TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.w500),
+                textStyle:
+                    TextStyle(color: _yaziRenk, fontWeight: FontWeight.w500),
               )).tr(),
           elevation: 0,
           centerTitle: true,
-          iconTheme: const IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(color: _yaziRenk),
         ),
         body: Stack(
           children: [
@@ -31,7 +39,7 @@ class MyModelsPage extends StatelessWidget {
               child: _model.state == ViewState.geliyor
                   ? const CircularProgressIndicator()
                   : _model.state == ViewState.geldi
-                      ? kaliplarim(_model, context)
+                      ? kaliplarim(_model, context, _yaziRenk, _themeModel)
                       : const Text("HATA"),
             ),
             Positioned(
@@ -47,7 +55,8 @@ class MyModelsPage extends StatelessWidget {
     );
   }
 
-  Container kaliplarim(ModelViewModel _model, BuildContext context) {
+  Container kaliplarim(ModelViewModel _model, BuildContext context,
+      Color _yaziRenk, ThemeViewModel _themeModel) {
     return Container(
       margin: const EdgeInsets.only(left: 10, right: 10),
       child: SingleChildScrollView(
@@ -63,8 +72,8 @@ class MyModelsPage extends StatelessWidget {
                 child: Text("modellerimaciklama",
                     textAlign: TextAlign.start,
                     style: GoogleFonts.ptSans(
-                      textStyle: const TextStyle(
-                          color: Colors.black,
+                      textStyle: TextStyle(
+                          color: _yaziRenk,
                           fontSize: 17,
                           fontWeight: FontWeight.bold),
                     )).tr()),
@@ -73,8 +82,8 @@ class MyModelsPage extends StatelessWidget {
                 child: Text("modellerimdetay",
                     textAlign: TextAlign.start,
                     style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        color: Colors.black,
+                      textStyle: TextStyle(
+                        color: _yaziRenk,
                         fontSize: 14,
                       ),
                     )).tr()),
@@ -106,12 +115,17 @@ class MyModelsPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => ModelPage(
                                   model: _model.asd[index],
+                                  seciliRenk: _themeModel.state == ThemeMod.dark
+                                      ? Colors.black
+                                      : Colors.white,
                                 )),
                       );
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 24, 24, 24),
+                          color: _themeModel.state == ThemeMod.dark
+                              ? Colors.white24
+                              : const Color.fromARGB(255, 24, 24, 24),
                           borderRadius: BorderRadius.circular(10)),
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 5),

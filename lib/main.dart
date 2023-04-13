@@ -7,6 +7,8 @@ import 'package:tekstil_cad/view_models/model_viewmodel.dart';
 import 'package:tekstil_cad/view_models/user_viewmodel.dart';
 import 'package:tekstil_cad/locator.dart';
 
+import 'view_models/theme_viewmodel.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -15,6 +17,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (_) => ModelViewModel()),
       ChangeNotifierProvider(create: (_) => UserViewModel()),
+      ChangeNotifierProvider(create: (_) => ThemeViewModel()),
     ],
     child: EasyLocalization(
         supportedLocales: const [Locale('en', 'US'), Locale('tr', 'TR')],

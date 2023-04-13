@@ -26,8 +26,6 @@ class RouteGenerator {
         return _gidilecekrota(const ProfilePage());
  case '/login':
         return _gidilecekrota(const LoginPage());
-        case '/ayarlar':
-        return _gidilecekrota(const SettingsPage());
       default:
         return _gidilecekrota(const HomePage());
     }

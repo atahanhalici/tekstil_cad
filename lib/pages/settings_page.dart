@@ -1,15 +1,29 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+class SettingsPage extends StatefulWidget {
+  bool dark;
+  SettingsPage({Key? key, required this.dark}) : super(key: key);
 
   @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
   Widget build(BuildContext context) {
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
     return SafeArea(
       child: Scaffold(
+        backgroundColor: _themeModel.state == ThemeMod.dark
+            ? const Color.fromARGB(255, 24, 24, 24)
+            : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,11 +52,15 @@ class SettingsPage extends StatelessWidget {
                                                 ? 1000
                                                 : 1200,
                     child: Center(
-                      child: Image.asset(
-                        "assets/logo.jpeg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        child: _themeModel.state == ThemeMod.dark
+                            ? Image.asset(
+                                "assets/logo_koyu.jpg",
+                                fit: BoxFit.cover,
+                              )
+                            : Image.asset(
+                                "assets/logo.jpeg",
+                                fit: BoxFit.cover,
+                              )),
                   ),
                   Positioned(
                     left: 15,
@@ -51,9 +69,13 @@ class SettingsPage extends StatelessWidget {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Icon(defaultTargetPlatform == TargetPlatform.iOS
-                          ? Icons.arrow_back_ios
-                          : Icons.arrow_back),
+                      child: Icon(
+                        defaultTargetPlatform == TargetPlatform.iOS
+                            ? Icons.arrow_back_ios
+                            : Icons.arrow_back,
+                        color:
+                            widget.dark == true ? Colors.white : Colors.black,
+                      ),
                     ),
                   ),
                 ],
@@ -61,19 +83,11 @@ class SettingsPage extends StatelessWidget {
               Container(
                 //height: 220,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 34, 126, 167),
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 34, 126, 167),
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.8),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, -5), // changes position of shadow
-                    ),
-                  ],
                 ),
                 child: Column(
                   children: [
@@ -170,6 +184,30 @@ class SettingsPage extends StatelessWidget {
                                             Navigator.pushReplacementNamed(
                                                 context, '/anasayfa',
                                                 arguments: {});
+                                            Navigator.pushNamed(
+                                                context, "/profil");
+                                            defaultTargetPlatform ==
+                                                    TargetPlatform.android
+                                                ? Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return SettingsPage(
+                                                          dark: widget.dark,
+                                                        );
+                                                      },
+                                                    ),
+                                                  )
+                                                : Navigator.push(
+                                                    context,
+                                                    CupertinoPageRoute(
+                                                      builder: (context) {
+                                                        return SettingsPage(
+                                                          dark: widget.dark,
+                                                        );
+                                                      },
+                                                    ),
+                                                  );
                                           }
                                         } else if (yeni == "İngilizce" ||
                                             yeni == "English") {
@@ -181,11 +219,125 @@ class SettingsPage extends StatelessWidget {
                                             Navigator.pushReplacementNamed(
                                                 context, '/anasayfa',
                                                 arguments: {});
+                                            Navigator.pushNamed(
+                                                context, "/profil");
+                                            defaultTargetPlatform ==
+                                                    TargetPlatform.android
+                                                ? Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return SettingsPage(
+                                                          dark: widget.dark,
+                                                        );
+                                                      },
+                                                    ),
+                                                  )
+                                                : Navigator.push(
+                                                    context,
+                                                    CupertinoPageRoute(
+                                                      builder: (context) {
+                                                        return SettingsPage(
+                                                          dark: widget.dark,
+                                                        );
+                                                      },
+                                                    ),
+                                                  );
                                           }
                                         }
                                       }),
                                 ),
                               ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 8, top: 10),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "karanlikmod".tr() + " :",
+                                    style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                              ),
+                              Switch(
+                                  value: widget.dark,
+                                  activeColor: Colors.white,
+                                  onChanged: (bool value) {
+                                    if (value == true) {
+                                      widget.dark = value;
+                                      _themeModel.themeDark();
+                                      Navigator.popUntil(
+                                          context, (route) => route.isFirst);
+                                      Navigator.pushReplacementNamed(
+                                          context, '/anasayfa',
+                                          arguments: {});
+                                      Navigator.pushNamed(context, "/profil");
+                                      defaultTargetPlatform ==
+                                              TargetPlatform.android
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) {
+                                                  return SettingsPage(
+                                                    dark: widget.dark,
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          : Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) {
+                                                  return SettingsPage(
+                                                    dark: widget.dark,
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                    } else {
+                                      widget.dark = value;
+                                      _themeModel.themeLight();
+                                      Navigator.popUntil(
+                                          context, (route) => route.isFirst);
+                                      Navigator.pushReplacementNamed(
+                                          context, '/anasayfa',
+                                          arguments: {});
+                                      Navigator.pushNamed(context, "/profil");
+                                      defaultTargetPlatform ==
+                                              TargetPlatform.android
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) {
+                                                  return SettingsPage(
+                                                    dark: widget.dark,
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          : Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                builder: (context) {
+                                                  return SettingsPage(
+                                                    dark: widget.dark,
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                    }
+                                  })
                             ],
                           ),
                           const SizedBox(

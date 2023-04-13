@@ -3,7 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/my_account_page.dart';
+import 'package:tekstil_cad/pages/settings_page.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 import 'package:tekstil_cad/widgets/bottom_navi.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -11,18 +14,25 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
+    Color _yaziRenk =
+        _themeModel.state == ThemeMod.dark ? Colors.white : Colors.black;
     return SafeArea(
       child: Scaffold(
+          backgroundColor: _themeModel.state == ThemeMod.dark
+              ? const Color.fromARGB(255, 24, 24, 24)
+              : Colors.white,
           appBar: AppBar(
             title: Text("profil",
                 style: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w500),
+                  textStyle:
+                      TextStyle(color: _yaziRenk, fontWeight: FontWeight.w500),
                 )).tr(),
             centerTitle: true,
             elevation: 0,
             backgroundColor: Colors.transparent,
-            iconTheme: const IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: _yaziRenk),
           ),
           body: Stack(
             children: [
@@ -33,48 +43,85 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       ProfileMenu(
-                        text: "hesabim".tr(),
-                        icon: Icons.person,
-                        press: () {
-                          defaultTargetPlatform == TargetPlatform.android
-                              ? Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return const MyAccount();
-                                    },
-                                  ),
-                                )
-                              : Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                    builder: (context) {
-                                      return const MyAccount();
-                                    },
-                                  ),
-                                );
-                        },
-                      ),
+                          text: "hesabim".tr(),
+                          icon: Icons.person,
+                          press: () {
+                            defaultTargetPlatform == TargetPlatform.android
+                                ? Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const MyAccount();
+                                      },
+                                    ),
+                                  )
+                                : Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) {
+                                        return const MyAccount();
+                                      },
+                                    ),
+                                  );
+                          },
+                          textColor: _yaziRenk,
+                          color: _themeModel.state == ThemeMod.dark
+                              ? Colors.white24
+                              : const Color(0xFFF5F6F9)),
                       ProfileMenu(
-                        text: "ayarlar".tr(),
-                        icon: Icons.settings,
-                        press: () {
-                          Navigator.pushNamed(context, '/ayarlar',
-                              arguments: {});
-                        },
-                      ),
+                          text: "ayarlar".tr(),
+                          icon: Icons.settings,
+                          press: () {
+                            defaultTargetPlatform == TargetPlatform.android
+                                ? Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return SettingsPage(
+                                          dark:
+                                              _themeModel.state == ThemeMod.dark
+                                                  ? true
+                                                  : false,
+                                        );
+                                      },
+                                    ),
+                                  )
+                                : Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) {
+                                        return SettingsPage(
+                                          dark:
+                                              _themeModel.state == ThemeMod.dark
+                                                  ? true
+                                                  : false,
+                                        );
+                                      },
+                                    ),
+                                  );
+                          },
+                          textColor: _yaziRenk,
+                          color: _themeModel.state == ThemeMod.dark
+                              ? Colors.white24
+                              : const Color(0xFFF5F6F9)),
                       ProfileMenu(
-                        text: "yardimmerkezi".tr(),
-                        icon: Icons.question_answer,
-                        press: () {},
-                      ),
+                          text: "yardimmerkezi".tr(),
+                          icon: Icons.question_answer,
+                          press: () {},
+                          textColor: _yaziRenk,
+                          color: _themeModel.state == ThemeMod.dark
+                              ? Colors.white24
+                              : const Color(0xFFF5F6F9)),
                       ProfileMenu(
-                        text: "cikisyap".tr(),
-                        icon: Icons.logout,
-                        press: () {
-                          _cikis(context);
-                        },
-                      ),
+                          text: "cikisyap".tr(),
+                          icon: Icons.logout,
+                          press: () {
+                            _cikis(context);
+                          },
+                          textColor: _yaziRenk,
+                          color: _themeModel.state == ThemeMod.dark
+                              ? Colors.white24
+                              : const Color(0xFFF5F6F9)),
                       const SizedBox(
                         height: 80,
                       )
@@ -98,7 +145,9 @@ class ProfilePage extends StatelessWidget {
   ProfileMenu(
       {required String text,
       required IconData icon,
-      required void Function()? press}) {
+      required void Function()? press,
+      required Color color,
+      required Color textColor}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: TextButton(
@@ -106,7 +155,7 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          backgroundColor: const Color(0xFFF5F6F9),
+          backgroundColor: color,
         ),
         onPressed: press,
         child: Row(
@@ -116,13 +165,10 @@ class ProfilePage extends StatelessWidget {
             Expanded(
                 child: Text(text,
                     style: GoogleFonts.ptSans(
-                      textStyle: const TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                      textStyle: TextStyle(
+                          color: textColor, fontWeight: FontWeight.bold),
                     ))),
-            const Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.black,
-            ),
+            Icon(Icons.arrow_forward_ios, color: textColor),
           ],
         ),
       ),

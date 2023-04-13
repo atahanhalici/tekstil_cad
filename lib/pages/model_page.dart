@@ -2,28 +2,35 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/model.dart';
+import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 
 class ModelPage extends StatefulWidget {
   final Model model;
-  const ModelPage({Key? key, required this.model}) : super(key: key);
+  Color seciliRenk;
+   ModelPage({Key? key, required this.model, required this.seciliRenk})
+      : super(key: key);
 
   @override
   State<ModelPage> createState() => _ModelPageState();
 }
 
 class _ModelPageState extends State<ModelPage> {
-  Color _seciliRenk = Colors.white;
   @override
   Widget build(BuildContext context) {
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: true);
+    /*Color _seciliRenk =
+        _themeModel.state == ThemeMod.dark ? Colors.black : Colors.white;*/
     return SafeArea(
       child: Scaffold(
-          backgroundColor: _seciliRenk,
+          backgroundColor: widget.seciliRenk,
           appBar: AppBar(
             title: Text(widget.model.adi,
                 style: GoogleFonts.montserrat(
                     textStyle: TextStyle(
-                        color: _seciliRenk == Colors.white
+                        color: widget.seciliRenk == Colors.white
                             ? Colors.black
                             : Colors.white),
                     fontWeight: FontWeight.w500)),
@@ -32,7 +39,7 @@ class _ModelPageState extends State<ModelPage> {
             backgroundColor: Colors.transparent,
             iconTheme: IconThemeData(
                 color:
-                    _seciliRenk == Colors.white ? Colors.black : Colors.white),
+                    widget.seciliRenk == Colors.white ? Colors.black : Colors.white),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -75,20 +82,11 @@ class _ModelPageState extends State<ModelPage> {
                   child: Container(
                     //height: 220,
                     width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 34, 126, 167),
-                      borderRadius: const BorderRadius.only(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 34, 126, 167),
+                      borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.8),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset:
-                              const Offset(0, -5), // changes position of shadow
-                        ),
-                      ],
                     ),
                     child: Column(
                       children: [
@@ -148,7 +146,8 @@ class _ModelPageState extends State<ModelPage> {
                                                 color: Colors.white),
                                           )).tr(),
                                       DropdownButton<Color>(
-                                          dropdownColor: Colors.black,
+                                          dropdownColor: const Color.fromARGB(
+                                              255, 24, 24, 24),
                                           elevation: 0,
                                           underline: Container(
                                             height: 0,
@@ -214,10 +213,10 @@ class _ModelPageState extends State<ModelPage> {
                                               value: Colors.green,
                                             ),
                                           ],
-                                          value: _seciliRenk,
+                                          value: widget.seciliRenk,
                                           onChanged: (Color? yeni) {
                                             setState(() {
-                                              _seciliRenk = yeni!;
+                                              widget.seciliRenk = yeni!;
                                             });
                                           }),
                                     ],
