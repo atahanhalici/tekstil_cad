@@ -6,10 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:tekstil_cad/models/model.dart';
 import 'package:tekstil_cad/view_models/theme_viewmodel.dart';
 
+// ignore: must_be_immutable
 class ModelPage extends StatefulWidget {
   final Model model;
   Color seciliRenk;
-   ModelPage({Key? key, required this.model, required this.seciliRenk})
+  ModelPage({Key? key, required this.model, required this.seciliRenk})
       : super(key: key);
 
   @override
@@ -38,42 +39,44 @@ class _ModelPageState extends State<ModelPage> {
             elevation: 0,
             backgroundColor: Colors.transparent,
             iconTheme: IconThemeData(
-                color:
-                    widget.seciliRenk == Colors.white ? Colors.black : Colors.white),
+                color: widget.seciliRenk == Colors.white
+                    ? Colors.black
+                    : Colors.white),
           ),
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height <
-                          MediaQuery.of(context).size.width
-                      ? MediaQuery.of(context).size.height - 56
-                      : MediaQuery.of(context).size.height < 700
-                          ? 500
-                          : MediaQuery.of(context).size.height < 800
-                              ? 575
-                              : MediaQuery.of(context).size.height < 900
-                                  ? 650
-                                  : MediaQuery.of(context).size.height < 1000
-                                      ? 720
-                                      : MediaQuery.of(context).size.height <
-                                              1100
-                                          ? 875
-                                          : MediaQuery.of(context).size.height <
-                                                  1300
-                                              ? 1000
-                                              : 1200,
-                  child: Center(
-                      child: ModelViewer(
-                          ar: true,
-                          backgroundColor: Colors.transparent,
-                          autoRotate: true,
-                          autoPlay: false,
-                          src: widget.model
-                              .link) /*BabylonJSViewer(src: 'assets/jacket.glb')*/
-                      ),
-                ),
+                    height: MediaQuery.of(context).size.height <
+                            MediaQuery.of(context).size.width
+                        ? MediaQuery.of(context).size.height - 56
+                        : MediaQuery.of(context).size.height < 700
+                            ? 500
+                            : MediaQuery.of(context).size.height < 800
+                                ? 575
+                                : MediaQuery.of(context).size.height < 900
+                                    ? 650
+                                    : MediaQuery.of(context).size.height < 1000
+                                        ? 720
+                                        : MediaQuery.of(context).size.height <
+                                                1100
+                                            ? 875
+                                            : MediaQuery.of(context)
+                                                        .size
+                                                        .height <
+                                                    1300
+                                                ? 1000
+                                                : 1200,
+                    child: Center(
+                        child: ModelViewer(
+                            ar: true,
+                            backgroundColor: Colors.transparent,
+                            autoRotate: true,
+                            autoPlay: false,
+                            src: widget.model.link)
+                        /*BabylonJSViewer(src: 'assets/jacket.glb')*/
+                        )),
                 Visibility(
                   visible: MediaQuery.of(context).size.height >
                           MediaQuery.of(context).size.width
@@ -140,11 +143,11 @@ class _ModelPageState extends State<ModelPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Text('arkaplanrengi',
+                                      Text('arkaplanrengi'.tr() + " :",
                                           style: GoogleFonts.poppins(
                                             textStyle: const TextStyle(
                                                 color: Colors.white),
-                                          )).tr(),
+                                          )),
                                       DropdownButton<Color>(
                                           dropdownColor: const Color.fromARGB(
                                               255, 24, 24, 24),

@@ -179,74 +179,14 @@ class _SettingsPageState extends State<SettingsPage> {
                                           if ("dil".tr() != "Dil") {
                                             context.setLocale(
                                                 const Locale('tr', 'TR'));
-                                            Navigator.popUntil(
-                                                context,
-                                                (route) =>
-                                                    route.settings.name == "/");
-                                            Navigator.pushReplacementNamed(
-                                                context, '/',
-                                                arguments: {});
-                                            Navigator.pushNamed(
-                                                context, "/profil");
-                                            defaultTargetPlatform ==
-                                                    TargetPlatform.android
-                                                ? Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) {
-                                                        return SettingsPage(
-                                                          dark: widget.dark,
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                : Navigator.push(
-                                                    context,
-                                                    CupertinoPageRoute(
-                                                      builder: (context) {
-                                                        return SettingsPage(
-                                                          dark: widget.dark,
-                                                        );
-                                                      },
-                                                    ),
-                                                  );
+                                            _themeModel.dilDegis();
                                           }
                                         } else if (yeni == "İngilizce" ||
                                             yeni == "English") {
                                           if ("dil".tr() != "Language") {
                                             context.setLocale(
                                                 const Locale('en', 'US'));
-                                            Navigator.popUntil(
-                                                context,
-                                                (route) =>
-                                                    route.settings.name == "/");
-                                            Navigator.pushReplacementNamed(
-                                                context, '/',
-                                                arguments: {});
-                                            Navigator.pushNamed(
-                                                context, "/profil");
-                                            defaultTargetPlatform ==
-                                                    TargetPlatform.android
-                                                ? Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) {
-                                                        return SettingsPage(
-                                                          dark: widget.dark,
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                : Navigator.push(
-                                                    context,
-                                                    CupertinoPageRoute(
-                                                      builder: (context) {
-                                                        return SettingsPage(
-                                                          dark: widget.dark,
-                                                        );
-                                                      },
-                                                    ),
-                                                  );
+                                            _themeModel.dilDegis();
                                           }
                                         }
                                       }),
@@ -281,69 +221,9 @@ class _SettingsPageState extends State<SettingsPage> {
                                     if (value == true) {
                                       widget.dark = value;
                                       _themeModel.themeDark();
-                                      Navigator.popUntil(
-                                          context,
-                                          (route) =>
-                                              route.settings.name == "/");
-                                      Navigator.pushReplacementNamed(
-                                          context, '/',
-                                          arguments: {});
-                                      Navigator.pushNamed(context, "/profil");
-                                      defaultTargetPlatform ==
-                                              TargetPlatform.android
-                                          ? Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  return SettingsPage(
-                                                    dark: widget.dark,
-                                                  );
-                                                },
-                                              ),
-                                            )
-                                          : Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                builder: (context) {
-                                                  return SettingsPage(
-                                                    dark: widget.dark,
-                                                  );
-                                                },
-                                              ),
-                                            );
                                     } else {
                                       widget.dark = value;
                                       _themeModel.themeLight();
-                                      Navigator.popUntil(
-                                          context,
-                                          (route) =>
-                                              route.settings.name == "/");
-                                      Navigator.pushReplacementNamed(
-                                          context, '/',
-                                          arguments: {});
-                                      Navigator.pushNamed(context, "/profil");
-                                      defaultTargetPlatform ==
-                                              TargetPlatform.android
-                                          ? Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  return SettingsPage(
-                                                    dark: widget.dark,
-                                                  );
-                                                },
-                                              ),
-                                            )
-                                          : Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                builder: (context) {
-                                                  return SettingsPage(
-                                                    dark: widget.dark,
-                                                  );
-                                                },
-                                              ),
-                                            );
                                     }
                                   })
                             ],

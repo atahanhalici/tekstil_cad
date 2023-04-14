@@ -42,33 +42,176 @@ class ProfilePage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      ProfileMenu(
-                          text: "hesabim".tr(),
-                          icon: Icons.person,
-                          press: () {
-                            defaultTargetPlatform == TargetPlatform.android
-                                ? Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return const MyAccount();
-                                      },
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 9),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: _themeModel.state == ThemeMod.dark
+                                    ? Colors.white24
+                                    : const Color(0xFFF5F6F9),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.language,
+                                    color: Color.fromARGB(255, 34, 126, 167),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Expanded(
+                                    child: Text(
+                                      "dil".tr() + " :",
+                                      style: GoogleFonts.ptSans(
+                                        textStyle: TextStyle(
+                                            color: _yaziRenk,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      textAlign: TextAlign.start,
                                     ),
-                                  )
-                                : Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) {
-                                        return const MyAccount();
-                                      },
+                                  ),
+                                  DropdownButton<String>(
+                                      dropdownColor:
+                                          _themeModel.state == ThemeMod.dark
+                                              ? Colors.white24
+                                              : const Color(0xFFF5F6F9),
+                                      elevation: 0,
+                                      underline: Container(
+                                        height: 0,
+                                      ),
+                                      icon: Icon(
+                                        Icons.arrow_drop_down,
+                                        color: _yaziRenk,
+                                      ),
+                                      hint: Text(
+                                        'dil'.tr(),
+                                        style: GoogleFonts.ptSans(
+                                          textStyle:
+                                              TextStyle(color: _yaziRenk),
+                                        ),
+                                      ),
+                                      items: [
+                                        DropdownMenuItem(
+                                          child: Text('turkce'.tr(),
+                                              style: GoogleFonts.ptSans(
+                                                textStyle:
+                                                    TextStyle(color: _yaziRenk),
+                                              )),
+                                          value: "Türkçe",
+                                        ),
+                                        DropdownMenuItem(
+                                          child: Text('ingilizce'.tr(),
+                                              style: GoogleFonts.ptSans(
+                                                textStyle:
+                                                    TextStyle(color: _yaziRenk),
+                                              )),
+                                          value: "İngilizce",
+                                        ),
+                                      ],
+                                      value: "dil".tr() == "Dil"
+                                          ? "Türkçe"
+                                          : "İngilizce",
+                                      onChanged: (String? yeni) {
+                                        if (yeni == "Türkçe" ||
+                                            yeni == "Turkish") {
+                                          if ("dil".tr() != "Dil") {
+                                            context.setLocale(
+                                                const Locale('tr', 'TR'));
+                                            _themeModel.dilDegis();
+                                          }
+                                        } else if (yeni == "İngilizce" ||
+                                            yeni == "English") {
+                                          if ("dil".tr() != "Language") {
+                                            context.setLocale(
+                                                const Locale('en', 'US'));
+                                            _themeModel.dilDegis();
+                                          }
+                                        }
+                                      }),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Column(children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 9),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: _themeModel.state == ThemeMod.dark
+                                      ? Colors.white24
+                                      : const Color(0xFFF5F6F9),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.sunny,
+                                      color: Color.fromARGB(255, 34, 126, 167),
                                     ),
-                                  );
-                          },
-                          textColor: _yaziRenk,
-                          color: _themeModel.state == ThemeMod.dark
-                              ? Colors.white24
-                              : const Color(0xFFF5F6F9)),
-                      ProfileMenu(
+                                    const SizedBox(width: 20),
+                                    Expanded(
+                                      child: Text(
+                                        "karanlikmod".tr() + " :",
+                                        style: GoogleFonts.ptSans(
+                                          textStyle: TextStyle(
+                                              color: _yaziRenk,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                    Switch(
+                                        value:
+                                            _themeModel.state == ThemeMod.dark
+                                                ? true
+                                                : false,
+                                        activeColor: Colors.white,
+                                        onChanged: (bool value) {
+                                          if (value == true) {
+                                            _themeModel.themeDark();
+                                          } else {
+                                            _themeModel.themeLight();
+                                          }
+                                        })
+                                  ],
+                                ),
+                              ),
+                            )
+                          ]),
+                          ProfileMenu(
+                              text: "hesabim".tr(),
+                              icon: Icons.person,
+                              press: () {
+                                defaultTargetPlatform == TargetPlatform.android
+                                    ? Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return const MyAccount();
+                                          },
+                                        ),
+                                      )
+                                    : Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) {
+                                            return const MyAccount();
+                                          },
+                                        ),
+                                      );
+                              },
+                              textColor: _yaziRenk,
+                              color: _themeModel.state == ThemeMod.dark
+                                  ? Colors.white24
+                                  : const Color(0xFFF5F6F9)),
+                          /* ProfileMenu(
                           text: "ayarlar".tr(),
                           icon: Icons.settings,
                           press: () {
@@ -103,25 +246,27 @@ class ProfilePage extends StatelessWidget {
                           textColor: _yaziRenk,
                           color: _themeModel.state == ThemeMod.dark
                               ? Colors.white24
-                              : const Color(0xFFF5F6F9)),
-                      ProfileMenu(
-                          text: "yardimmerkezi".tr(),
-                          icon: Icons.question_answer,
-                          press: () {},
-                          textColor: _yaziRenk,
-                          color: _themeModel.state == ThemeMod.dark
-                              ? Colors.white24
-                              : const Color(0xFFF5F6F9)),
-                      ProfileMenu(
-                          text: "cikisyap".tr(),
-                          icon: Icons.logout,
-                          press: () {
-                            _cikis(context);
-                          },
-                          textColor: _yaziRenk,
-                          color: _themeModel.state == ThemeMod.dark
-                              ? Colors.white24
-                              : const Color(0xFFF5F6F9)),
+                              : const Color(0xFFF5F6F9)),*/
+                          ProfileMenu(
+                              text: "yardimmerkezi".tr(),
+                              icon: Icons.question_answer,
+                              press: () {},
+                              textColor: _yaziRenk,
+                              color: _themeModel.state == ThemeMod.dark
+                                  ? Colors.white24
+                                  : const Color(0xFFF5F6F9)),
+                          ProfileMenu(
+                              text: "cikisyap".tr(),
+                              icon: Icons.logout,
+                              press: () {
+                                _cikis(context);
+                              },
+                              textColor: _yaziRenk,
+                              color: _themeModel.state == ThemeMod.dark
+                                  ? Colors.white24
+                                  : const Color(0xFFF5F6F9)),
+                        ],
+                      ),
                       const SizedBox(
                         height: 80,
                       )

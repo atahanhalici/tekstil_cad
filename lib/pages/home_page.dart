@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,7 @@ class HomePage extends StatelessWidget {
             : _zaman.hour >= 18 && _zaman.hour < 22
                 ? 'iyiaksamlar'.tr()
                 : 'iyigeceler'.tr();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: _themeModel.state == ThemeMod.dark
@@ -62,13 +65,28 @@ class HomePage extends StatelessWidget {
                       height: 20,
                     ),
                     _userModel.state == ViewState.geldi
-                        ? AnimatedTextKit(
-                            totalRepeatCount: 1,
-                            isRepeatingAnimation: true,
-                            animatedTexts: [
-                                TypewriterAnimatedText(
+                        ? _themeModel.states == States.ilk
+                            ? AnimatedTextKit(
+                                totalRepeatCount: 1,
+                                isRepeatingAnimation: true,
+                                animatedTexts: [
+                                    TypewriterAnimatedText(
+                                        selamlama + ' ' + _userModel.user.adi,
+                                        textStyle: GoogleFonts.ptSans(
+                                            textStyle: TextStyle(
+                                                color: _themeModel.state ==
+                                                        ThemeMod.dark
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold)),
+                                        speed: const Duration(milliseconds: 40),
+                                        cursor: ""),
+                                  ])
+                            : _themeModel.states == States.geldi
+                                ? Text(
                                     selamlama + ' ' + _userModel.user.adi,
-                                    textStyle: GoogleFonts.ptSans(
+                                    style: GoogleFonts.ptSans(
                                         textStyle: TextStyle(
                                             color: _themeModel.state ==
                                                     ThemeMod.dark
@@ -76,36 +94,59 @@ class HomePage extends StatelessWidget {
                                                 : Colors.black,
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold)),
-                                    speed: const Duration(milliseconds: 40),
-                                    cursor: ""),
-                              ])
-                        : Text("TekstilCad",
-                            style: GoogleFonts.ptSans(
-                                textStyle: TextStyle(
+                                  )
+                                : Container()
+                        : _themeModel.states == States.ilk
+                            ? Text("TekstilCad",
+                                style: GoogleFonts.ptSans(
+                                    textStyle: TextStyle(
+                                        color:
+                                            _themeModel.state == ThemeMod.dark
+                                                ? Colors.white
+                                                : Colors.black,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold)))
+                            : Container(),
+                    _themeModel.states == States.ilk
+                        ? TweenAnimationBuilder<double>(
+                            tween: Tween<double>(begin: 30.0, end: 110.0),
+                            duration: const Duration(milliseconds: 10000),
+                            builder: (BuildContext context, double double,
+                                Widget? child) {
+                              return SizedBox(
+                                height: double,
+                                child: AnimatedTextKit(
+                                  totalRepeatCount: 1,
+                                  isRepeatingAnimation: false,
+                                  animatedTexts: [
+                                    TypewriterAnimatedText("aciklama".tr(),
+                                        textStyle: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                            color: _themeModel.state ==
+                                                    ThemeMod.dark
+                                                ? Colors.white
+                                                : Colors.black,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        speed: const Duration(milliseconds: 30),
+                                        cursor: "")
+                                  ],
+                                ),
+                              );
+                            },
+                          )
+                        : _themeModel.states == States.geldi
+                            ? Text("aciklama".tr(),
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
                                     color: _themeModel.state == ThemeMod.dark
                                         ? Colors.white
                                         : Colors.black,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold))),
-                    AnimatedTextKit(
-                        totalRepeatCount: 1,
-                        isRepeatingAnimation: false,
-                        animatedTexts: [
-                          TypewriterAnimatedText("aciklama".tr(),
-                              textStyle: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  color: _themeModel.state == ThemeMod.dark
-                                      ? Colors.white
-                                      : Colors.black,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              speed: const Duration(milliseconds: 30),
-                              cursor: "")
-                        ]),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                                    fontSize: 12,
+                                  ),
+                                ))
+                            : Container(),
                     const SizedBox(
                       height: 20,
                     ),
