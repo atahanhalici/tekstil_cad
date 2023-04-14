@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -108,33 +106,65 @@ class HomePage extends StatelessWidget {
                                         fontWeight: FontWeight.bold)))
                             : Container(),
                     _themeModel.states == States.ilk
-                        ? TweenAnimationBuilder<double>(
-                            tween: Tween<double>(begin: 30.0, end: 110.0),
-                            duration: const Duration(milliseconds: 10000),
-                            builder: (BuildContext context, double double,
-                                Widget? child) {
-                              return SizedBox(
-                                height: double,
-                                child: AnimatedTextKit(
-                                  totalRepeatCount: 1,
-                                  isRepeatingAnimation: false,
-                                  animatedTexts: [
-                                    TypewriterAnimatedText("aciklama".tr(),
-                                        textStyle: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                            color: _themeModel.state ==
-                                                    ThemeMod.dark
+                        ? SizedBox(
+                            height: MediaQuery.of(context).size.width > 280 &&
+                                    MediaQuery.of(context).size.width < 290
+                                ? 160
+                                : MediaQuery.of(context).size.width >= 290 &&
+                                        MediaQuery.of(context).size.width < 318
+                                    ? 145
+                                    : MediaQuery.of(context).size.width >= 318 &&
+                                            MediaQuery.of(context).size.width <
+                                                357
+                                        ? 130
+                                        : MediaQuery.of(context).size.width >= 357 &&
+                                                MediaQuery.of(context).size.width <
+                                                    434
+                                            ? 110
+                                            : MediaQuery.of(context).size.width >= 434 &&
+                                                    MediaQuery.of(context).size.width <
+                                                        530
+                                                ? 90
+                                                : MediaQuery.of(context).size.width >= 530 &&
+                                                        MediaQuery.of(context).size.width <
+                                                            700
+                                                    ? 70
+                                                    : MediaQuery.of(context).size.width >= 700 &&
+                                                            MediaQuery.of(context)
+                                                                    .size
+                                                                    .width <
+                                                                1000
+                                                        ? 55
+                                                        : MediaQuery.of(context)
+                                                                        .size
+                                                                        .width >=
+                                                                    1000 &&
+                                                                MediaQuery.of(context)
+                                                                        .size
+                                                                        .width <
+                                                                    1965
+                                                            ? 40
+                                                            : MediaQuery.of(context).size.width >= 1965
+                                                                ? 20
+                                                                : 200,
+                            child: AnimatedTextKit(
+                              totalRepeatCount: 1,
+                              isRepeatingAnimation: false,
+                              animatedTexts: [
+                                TypewriterAnimatedText("aciklama".tr(),
+                                    textStyle: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        color:
+                                            _themeModel.state == ThemeMod.dark
                                                 ? Colors.white
                                                 : Colors.black,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                        speed: const Duration(milliseconds: 30),
-                                        cursor: "")
-                                  ],
-                                ),
-                              );
-                            },
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    speed: const Duration(milliseconds: 30),
+                                    cursor: "")
+                              ],
+                            ),
                           )
                         : _themeModel.states == States.geldi
                             ? Text("aciklama".tr(),
