@@ -311,7 +311,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // ignore: non_constant_identifier_names
   Widget LayerTwo(BuildContext context) {
-    const Color layerTwoBg = Color(0xFFE9FFF6);
+    const Color layerTwoBg = Color.fromARGB(255, 233, 254, 255);
     return Container(
       width: 399,
       decoration: const BoxDecoration(
