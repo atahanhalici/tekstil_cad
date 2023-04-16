@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:tekstil_cad/pages/home_page.dart';
 import 'package:tekstil_cad/route_generator.dart';
@@ -13,6 +14,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   setupLocator();
+  await Hive.initFlutter();
+  await Hive.openBox("informations");
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => ModelViewModel()),
@@ -59,7 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     UserViewModel _userModel =
         Provider.of<UserViewModel>(context, listen: false);
+    ThemeViewModel _themeModel =
+        Provider.of<ThemeViewModel>(context, listen: false);
     _userModel.userGetir();
+
+    _themeModel.asd();
+
     return const HomePage();
   }
 }

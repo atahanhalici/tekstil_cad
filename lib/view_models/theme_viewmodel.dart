@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 enum ThemeMod { light, dark }
 
@@ -9,11 +10,14 @@ enum States {
 }
 
 class ThemeViewModel with ChangeNotifier {
-  ThemeMod _state = ThemeMod.light;
+  var box = Hive.box("informations");
+  ThemeMod _state =
+      WidgetsBinding.instance.window.platformBrightness == Brightness.light
+          ? ThemeMod.light
+          : ThemeMod.dark;
   ThemeMod get state => _state;
   States _states = States.ilk;
   States get states => _states;
-  bool otoDondur = false;
   set state(ThemeMod value) {
     _state = value;
     notifyListeners();
@@ -24,11 +28,34 @@ class ThemeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  asd() async {
+    var tema = box.get("tema");
+    if (tema == null) {
+      box.put(
+          "tema",
+          WidgetsBinding.instance.window.platformBrightness == Brightness.light
+              ? "light"
+              : "dark");
+    }
+    tema = box.get("tema");
+    await Future.delayed(const Duration(milliseconds: 50));
+    tema == "light" ? themeLightilk() : themeDarkilk();
+  }
+
   themeLight() async {
     states = States.geliyor;
     state = ThemeMod.light;
+    box.put("tema", "light");
     await Future.delayed(const Duration(milliseconds: 100));
     states = States.geldi;
+  }
+
+  themeLightilk() async {
+    states = States.geliyor;
+    state = ThemeMod.light;
+    box.put("tema", "light");
+    await Future.delayed(const Duration(milliseconds: 100));
+    states = States.ilk;
   }
 
   dilDegis() async {
@@ -37,17 +64,19 @@ class ThemeViewModel with ChangeNotifier {
     states = States.geldi;
   }
 
-  otoDondurme(bool value) async {
+  themeDark() async {
     states = States.geliyor;
-    otoDondur = value;
+    state = ThemeMod.dark;
+    box.put("tema", "dark");
     await Future.delayed(const Duration(milliseconds: 100));
     states = States.geldi;
   }
 
-  themeDark() async {
+  themeDarkilk() async {
     states = States.geliyor;
     state = ThemeMod.dark;
+    box.put("tema", "dark");
     await Future.delayed(const Duration(milliseconds: 100));
-    states = States.geldi;
+    states = States.ilk;
   }
 }

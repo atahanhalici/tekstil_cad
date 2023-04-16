@@ -30,7 +30,6 @@ class HomePage extends StatelessWidget {
             : _zaman.hour >= 18 && _zaman.hour < 22
                 ? 'iyiaksamlar'.tr()
                 : 'iyigeceler'.tr();
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: _themeModel.state == ThemeMod.dark
