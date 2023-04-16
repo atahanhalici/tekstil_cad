@@ -43,9 +43,18 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(child: SizedBox()),
-                      Image.asset(
-                        "assets/logo_koyu.jpg",
-                        fit: BoxFit.cover,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height <
+                                MediaQuery.of(context).size.width
+                            ? MediaQuery.of(context).size.height - 100
+                            : null,
+                        child: Image.asset(
+                          MediaQuery.of(context).size.height <
+                                  MediaQuery.of(context).size.width
+                              ? "assets/logo_koyu_karsilama.jpg"
+                              : "assets/logo_koyu.jpg",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       Expanded(child: SizedBox()),
                       SizedBox(
@@ -54,8 +63,7 @@ class HomePage extends StatelessWidget {
                             totalRepeatCount: 1,
                             isRepeatingAnimation: true,
                             animatedTexts: [
-                              TypewriterAnimatedText(
-                                  "Sizin İçin Her Şeyi Hazırlıyoruz",
+                              TypewriterAnimatedText("hazirliyoruz".tr(),
                                   textStyle: GoogleFonts.ptSans(
                                       textStyle: const TextStyle(
                                           color: Colors.white,
@@ -73,9 +81,18 @@ class HomePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(child: SizedBox()),
-                      Image.asset(
-                        "assets/logo.jpeg",
-                        fit: BoxFit.cover,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height <
+                                MediaQuery.of(context).size.width
+                            ? MediaQuery.of(context).size.height - 100
+                            : null,
+                        child: Image.asset(
+                          MediaQuery.of(context).size.height <
+                                  MediaQuery.of(context).size.width
+                              ? "assets/logo_karsilama.jpg"
+                              : "assets/logo.jpeg",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       Expanded(child: SizedBox()),
                       SizedBox(
@@ -84,8 +101,7 @@ class HomePage extends StatelessWidget {
                             totalRepeatCount: 1,
                             isRepeatingAnimation: true,
                             animatedTexts: [
-                              TypewriterAnimatedText(
-                                  "Sizin İçin Her Şeyi Hazırlıyoruz",
+                              TypewriterAnimatedText("hazirliyoruz".tr(),
                                   textStyle: GoogleFonts.ptSans(
                                       textStyle: const TextStyle(
                                           color: Colors.black,
