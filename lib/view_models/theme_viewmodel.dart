@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 enum ThemeMod { light, dark }
 
 enum States {
+  bos,
   ilk,
   geliyor,
   geldi,
@@ -16,7 +17,7 @@ class ThemeViewModel with ChangeNotifier {
           ? ThemeMod.light
           : ThemeMod.dark;
   ThemeMod get state => _state;
-  States _states = States.ilk;
+  States _states = States.bos;
   States get states => _states;
   set state(ThemeMod value) {
     _state = value;
@@ -38,7 +39,7 @@ class ThemeViewModel with ChangeNotifier {
               : "dark");
     }
     tema = box.get("tema");
-    await Future.delayed(const Duration(milliseconds: 50));
+    await Future.delayed(const Duration(seconds: 5));
     tema == "light" ? themeLightilk() : themeDarkilk();
   }
 

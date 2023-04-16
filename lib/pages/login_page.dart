@@ -188,27 +188,32 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              Container(
-                // width: 99,
-                // height: 35,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 34, 126, 167),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                  child: Text('girisyap'.tr(),
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            //fontFamily: 'Poppins-Medium',
-                            fontWeight: FontWeight.w400),
-                      )),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, '/', arguments: {});
+                },
+                child: Container(
+                  // width: 99,
+                  // height: 35,
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 34, 126, 167),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                    child: Text('girisyap'.tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              //fontFamily: 'Poppins-Medium',
+                              fontWeight: FontWeight.w400),
+                        )),
+                  ),
                 ),
               ),
             ],
