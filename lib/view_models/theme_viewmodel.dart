@@ -31,16 +31,18 @@ class ThemeViewModel with ChangeNotifier {
 
   asd() async {
     var tema = box.get("tema");
-    if (tema == null) {
-      box.put(
-          "tema",
-          WidgetsBinding.instance.window.platformBrightness == Brightness.light
-              ? "light"
-              : "dark");
-    }
-    tema = box.get("tema");
+    tema ??=
+        WidgetsBinding.instance.window.platformBrightness == Brightness.light
+            ? "light"
+            : "dark";
+
     await Future.delayed(const Duration(seconds: 5));
     tema == "light" ? themeLightilk() : themeDarkilk();
+    /* box.clear();
+    await Future.delayed(const Duration(milliseconds: 100));
+    states = States.geldi;
+    var tema = box.get("tema");
+    print(tema);*/
   }
 
   themeLight() async {
@@ -54,7 +56,6 @@ class ThemeViewModel with ChangeNotifier {
   themeLightilk() async {
     states = States.geliyor;
     state = ThemeMod.light;
-    box.put("tema", "light");
     await Future.delayed(const Duration(milliseconds: 100));
     states = States.ilk;
   }
@@ -76,7 +77,6 @@ class ThemeViewModel with ChangeNotifier {
   themeDarkilk() async {
     states = States.geliyor;
     state = ThemeMod.dark;
-    box.put("tema", "dark");
     await Future.delayed(const Duration(milliseconds: 100));
     states = States.ilk;
   }

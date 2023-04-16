@@ -109,28 +109,32 @@ class _ModelPageState extends State<ModelPage> {
                             // mainAxisAlignment: MainAxisAlignment.start,
                             //crossAxisAlignment: CrossAxisAlignment.start,
                             crossAxisAlignment: WrapCrossAlignment.start,
-                            direction: widget.model.aciklama.length < 45
-                                ? Axis.vertical
-                                : Axis.horizontal,
+                            direction: Axis.horizontal,
                             children: [
                               /*const SizedBox(
                                 height: 15,
                               ),*/
-                              Text(widget.model.adi,
-                                  style: GoogleFonts.ptSans(
-                                    textStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25),
-                                  )),
-                              const SizedBox(
-                                height: 5,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(widget.model.adi,
+                                      style: GoogleFonts.ptSans(
+                                        textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25),
+                                      )),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(widget.model.aciklama,
+                                      style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            color: Colors.white, fontSize: 13),
+                                      )),
+                                ],
                               ),
-                              Text(widget.model.aciklama,
-                                  style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                        color: Colors.white, fontSize: 13),
-                                  )),
                               const SizedBox(
                                 height: 10,
                               ),
