@@ -148,7 +148,7 @@ class MyModelsPage extends StatelessWidget {
                                         placeholder: 'assets/logo.jpeg',
                                         image: _model.asd[index].resim,
                                         fit: BoxFit.cover,
-                                        placeholderFit: BoxFit.contain,
+                                        placeholderFit: BoxFit.cover,
                                       ),
                                     )),
                               ),
